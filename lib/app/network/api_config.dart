@@ -11,4 +11,27 @@ class ApiConfig {
     'Authorization': 'Bearer $apiKey',
     'content-Type': 'application/json',
   };
+  static const List<String> symbols = [
+    'RUB',
+    'KWD',
+    'BHD',
+    'OMR',
+    'JOD',
+    'GBP',
+    'KYD',
+    'EUR',
+    'CHF',
+    'USD',
+    'BSD',
+    'BMD',
+    'PAB',
+    'CAD',
+    'AUD',
+    'SGD',
+    'BND',
+    'NZD',
+    'BGN',
+    'FJD',
+    'BRL',
+  ];
 }
