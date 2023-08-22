@@ -6,10 +6,10 @@ class AppRouter {
   static const currenciesRoute = '/Currencies';
 
   static final GoRouter _router = GoRouter(
-    initialLocation: currenciesRoute,
+    // initialLocation: currenciesRoute,
     routes: [
       GoRoute(
-        path: currenciesRoute,
+        path: root,
         builder: (context, state) => const CurrenciesScreen(),
         // pageBuilder: (context, state) => CustomTransitionPage(
         //   child: const CurrenciesScreen(),
