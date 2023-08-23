@@ -23,6 +23,7 @@ dependencies:
   flutter_screenutil: ^5.8.4
   flutter_holo_date_picker: ^1.1.0
   intl: ^0.18.1
+  syncfusion_flutter_charts: ^22.2.10
 
 dev_dependencies:
   flutter_test:

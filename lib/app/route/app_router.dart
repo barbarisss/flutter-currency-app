@@ -1,21 +1,29 @@
+import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/feature/currencies/presentation/screen/currencies/currencies_screen.dart';
+import 'package:currency_app/feature/currencies/presentation/screen/currency_detail/currency_detail_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
-  static const root = '/';
-  static const currenciesRoute = '/Currencies';
+  static const details = 'details';
 
   static final GoRouter _router = GoRouter(
     // initialLocation: currenciesRoute,
     routes: [
       GoRoute(
-        path: root,
+        path: '/',
         builder: (context, state) => const CurrenciesScreen(),
-        // pageBuilder: (context, state) => CustomTransitionPage(
-        //   child: const CurrenciesScreen(),
-        //   transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-        //       FadeTransition(opacity: animation, child: child),
-        // ),
+        routes: [
+          GoRoute(
+            name: details,
+            path: details,
+            builder: (context, state) {
+              CurrencyEntity currency = state.extra as CurrencyEntity;
+              return CurrencyDetailScreen(
+                currency: currency,
+              );
+            },
+          ),
+        ],
       ),
     ],
   );

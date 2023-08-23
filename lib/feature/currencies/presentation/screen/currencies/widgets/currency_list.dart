@@ -3,6 +3,7 @@ import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class CurrencyListWidget extends StatelessWidget {
   const CurrencyListWidget({
@@ -17,42 +18,45 @@ class CurrencyListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList.separated(
-        itemCount: currencies.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.mainPaddingWidth,
-            ),
-            child: GestureDetector(
-              onTap: () {},
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      currencies[index].name,
-                      style: TextStyle(
-                        fontSize: 28.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    '${currencies[index].rate}',
+      itemCount: currencies.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstants.mainPaddingWidth,
+          ),
+          child: GestureDetector(
+            onTap: () {
+              context.goNamed('details', extra: currencies[index]);
+            },
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    currencies[index].name,
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(width: AppConstants.mainPaddingWidth),
-                  const Icon(Icons.arrow_forward_ios_rounded),
-                ],
-              ),
+                ),
+                Text(
+                  '${currencies[index].rate}',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                  ),
+                ),
+                SizedBox(width: AppConstants.mainPaddingWidth),
+                const Icon(Icons.navigate_next_rounded),
+              ],
             ),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const Divider(
-            color: AppColors.grey,
-          );
-        });
+          ),
+        );
+      },
+      separatorBuilder: (context, index) {
+        return const Divider(
+          color: AppColors.grey,
+        );
+      },
+    );
   }
 }
