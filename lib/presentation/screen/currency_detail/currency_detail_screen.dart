@@ -1,7 +1,7 @@
 import 'package:currency_app/core/utils/constants.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currency_detail/widgets/chart.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currency_detail/widgets/current_rate.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/presentation/screen/currency_detail/widgets/chart.dart';
+import 'package:currency_app/presentation/screen/currency_detail/widgets/current_rate.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyDetailScreen extends StatelessWidget {

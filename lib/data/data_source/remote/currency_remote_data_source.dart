@@ -1,8 +1,8 @@
 import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/network/api_config.dart';
 import 'package:currency_app/app/network/dio_client.dart';
-import 'package:currency_app/feature/currencies/data/data_source/remote/base_currency_remote_data_source.dart';
-import 'package:currency_app/feature/currencies/data/model/currency_rate/currency_rate_model.dart';
+import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
+import 'package:currency_app/data/model/currency_rate/currency_rate_model.dart';
 
 class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
   final DioClient dioClient = injector<DioClient>();

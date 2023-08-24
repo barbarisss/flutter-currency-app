@@ -1,6 +1,6 @@
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

@@ -1,7 +1,7 @@
-import 'package:currency_app/feature/currencies/data/data_source/remote/base_currency_remote_data_source.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency_detail/currency_detail_entity.dart';
-import 'package:currency_app/feature/currencies/domain/repository/currency_repository.dart';
+import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/domain/entity/currency_detail/currency_detail_entity.dart';
+import 'package:currency_app/domain/repository/currency_repository.dart';
 
 class CurrencyRepositoryImpl implements CurrencyRepository {
   const CurrencyRepositoryImpl({required this.currencyRemoteDataSource});

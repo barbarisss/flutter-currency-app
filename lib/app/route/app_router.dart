@@ -1,8 +1,8 @@
 import 'package:currency_app/app/di/injector.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/feature/currencies/presentation/bloc/currency_bloc/currency_bloc.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currencies/currencies_screen.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currency_detail/currency_detail_screen.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/screen/currencies/currencies_screen.dart';
+import 'package:currency_app/presentation/screen/currency_detail/currency_detail_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 

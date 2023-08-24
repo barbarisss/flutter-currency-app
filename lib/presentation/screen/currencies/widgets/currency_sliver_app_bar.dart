@@ -1,6 +1,6 @@
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
-import 'package:currency_app/feature/currencies/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';

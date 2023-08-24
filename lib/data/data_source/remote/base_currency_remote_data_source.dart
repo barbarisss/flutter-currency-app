@@ -1,4 +1,4 @@
-import 'package:currency_app/feature/currencies/data/model/currency_rate/currency_rate_model.dart';
+import 'package:currency_app/data/model/currency_rate/currency_rate_model.dart';
 
 abstract class BaseCurrencyRemoteDataSource {
   Future<List<CurrencyRateModel>> getCurrenciesInfo();

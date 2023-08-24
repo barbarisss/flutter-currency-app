@@ -1,8 +1,8 @@
 import 'package:currency_app/core/utils/colors.dart';
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/feature/currencies/presentation/bloc/currency_bloc/currency_bloc.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currencies/widgets/currency_list.dart';
-import 'package:currency_app/feature/currencies/presentation/screen/currencies/widgets/currency_sliver_app_bar.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/screen/currencies/widgets/currency_list.dart';
+import 'package:currency_app/presentation/screen/currencies/widgets/currency_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

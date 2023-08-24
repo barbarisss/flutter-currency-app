@@ -1,5 +1,5 @@
-import 'package:currency_app/feature/currencies/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/feature/currencies/domain/repository/currency_repository.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/domain/repository/currency_repository.dart';
 
 class GetAllCurrenciesHistoricalUseCase {
   GetAllCurrenciesHistoricalUseCase({required this.currencyRepository});
