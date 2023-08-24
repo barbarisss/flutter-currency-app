@@ -1,6 +1,8 @@
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/feature/currencies/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -20,29 +22,36 @@ class CurrencySliverAppBar extends StatefulWidget {
 class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      expandedHeight: widget.expandedHeight,
-      backgroundColor: AppColors.white,
-      floating: true,
-      forceElevated: true,
-      elevation: 20.h,
-      shadowColor: AppColors.shadowGrey,
-      flexibleSpace: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppConstants.mainPaddingWidth,
-        ),
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const _BaseCurrencyWidget(),
-              _SetDateWidget(
-                text: 'Set the date',
-              )
-            ],
+    return BlocBuilder<CurrencyBloc, CurrencyState>(
+      builder: (context, state) {
+        print('Sliver AppBar BUILD');
+        // BlocProvider.of<CurrencyBloc>(context)
+        //     .add(const GetAllCurrencyEvent('RUB'));
+        return SliverAppBar(
+          expandedHeight: widget.expandedHeight,
+          backgroundColor: AppColors.white,
+          floating: true,
+          forceElevated: true,
+          elevation: 20.h,
+          shadowColor: AppColors.shadowGrey,
+          flexibleSpace: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppConstants.mainPaddingWidth,
+            ),
+            child: const Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _BaseCurrencyWidget(),
+                  _SetDateWidget(
+                    text: 'Set the date',
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
