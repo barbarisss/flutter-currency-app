@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'currency_model.dart';
+part of 'currency_rate_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CurrencyModel _$CurrencyModelFromJson(Map<String, dynamic> json) {
-  return _CurrencyModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$CurrencyModel {
+mixin _$CurrencyRateModel {
   String get name => throw _privateConstructorUsedError;
   String get base => throw _privateConstructorUsedError;
   double get rate => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CurrencyModelCopyWith<CurrencyModel> get copyWith =>
+  $CurrencyRateModelCopyWith<CurrencyRateModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CurrencyModelCopyWith<$Res> {
-  factory $CurrencyModelCopyWith(
-          CurrencyModel value, $Res Function(CurrencyModel) then) =
-      _$CurrencyModelCopyWithImpl<$Res, CurrencyModel>;
+abstract class $CurrencyRateModelCopyWith<$Res> {
+  factory $CurrencyRateModelCopyWith(
+          CurrencyRateModel value, $Res Function(CurrencyRateModel) then) =
+      _$CurrencyRateModelCopyWithImpl<$Res, CurrencyRateModel>;
   @useResult
   $Res call({String name, String base, double rate});
 }
 
 /// @nodoc
-class _$CurrencyModelCopyWithImpl<$Res, $Val extends CurrencyModel>
-    implements $CurrencyModelCopyWith<$Res> {
-  _$CurrencyModelCopyWithImpl(this._value, this._then);
+class _$CurrencyRateModelCopyWithImpl<$Res, $Val extends CurrencyRateModel>
+    implements $CurrencyRateModelCopyWith<$Res> {
+  _$CurrencyRateModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,22 +69,22 @@ class _$CurrencyModelCopyWithImpl<$Res, $Val extends CurrencyModel>
 }
 
 /// @nodoc
-abstract class _$$_CurrencyModelCopyWith<$Res>
-    implements $CurrencyModelCopyWith<$Res> {
-  factory _$$_CurrencyModelCopyWith(
-          _$_CurrencyModel value, $Res Function(_$_CurrencyModel) then) =
-      __$$_CurrencyModelCopyWithImpl<$Res>;
+abstract class _$$_CurrencyRateModelCopyWith<$Res>
+    implements $CurrencyRateModelCopyWith<$Res> {
+  factory _$$_CurrencyRateModelCopyWith(_$_CurrencyRateModel value,
+          $Res Function(_$_CurrencyRateModel) then) =
+      __$$_CurrencyRateModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String base, double rate});
 }
 
 /// @nodoc
-class __$$_CurrencyModelCopyWithImpl<$Res>
-    extends _$CurrencyModelCopyWithImpl<$Res, _$_CurrencyModel>
-    implements _$$_CurrencyModelCopyWith<$Res> {
-  __$$_CurrencyModelCopyWithImpl(
-      _$_CurrencyModel _value, $Res Function(_$_CurrencyModel) _then)
+class __$$_CurrencyRateModelCopyWithImpl<$Res>
+    extends _$CurrencyRateModelCopyWithImpl<$Res, _$_CurrencyRateModel>
+    implements _$$_CurrencyRateModelCopyWith<$Res> {
+  __$$_CurrencyRateModelCopyWithImpl(
+      _$_CurrencyRateModel _value, $Res Function(_$_CurrencyRateModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +94,7 @@ class __$$_CurrencyModelCopyWithImpl<$Res>
     Object? base = null,
     Object? rate = null,
   }) {
-    return _then(_$_CurrencyModel(
+    return _then(_$_CurrencyRateModel(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -117,13 +112,10 @@ class __$$_CurrencyModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_CurrencyModel implements _CurrencyModel {
-  _$_CurrencyModel(
-      {required this.name, required this.base, required this.rate});
 
-  factory _$_CurrencyModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CurrencyModelFromJson(json);
+class _$_CurrencyRateModel implements _CurrencyRateModel {
+  _$_CurrencyRateModel(
+      {required this.name, required this.base, required this.rate});
 
   @override
   final String name;
@@ -134,45 +126,35 @@ class _$_CurrencyModel implements _CurrencyModel {
 
   @override
   String toString() {
-    return 'CurrencyModel(name: $name, base: $base, rate: $rate)';
+    return 'CurrencyRateModel(name: $name, base: $base, rate: $rate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrencyModel &&
+            other is _$_CurrencyRateModel &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.base, base) || other.base == base) &&
             (identical(other.rate, rate) || other.rate == rate));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, base, rate);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrencyModelCopyWith<_$_CurrencyModel> get copyWith =>
-      __$$_CurrencyModelCopyWithImpl<_$_CurrencyModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CurrencyModelToJson(
-      this,
-    );
-  }
+  _$$_CurrencyRateModelCopyWith<_$_CurrencyRateModel> get copyWith =>
+      __$$_CurrencyRateModelCopyWithImpl<_$_CurrencyRateModel>(
+          this, _$identity);
 }
 
-abstract class _CurrencyModel implements CurrencyModel {
-  factory _CurrencyModel(
+abstract class _CurrencyRateModel implements CurrencyRateModel {
+  factory _CurrencyRateModel(
       {required final String name,
       required final String base,
-      required final double rate}) = _$_CurrencyModel;
-
-  factory _CurrencyModel.fromJson(Map<String, dynamic> json) =
-      _$_CurrencyModel.fromJson;
+      required final double rate}) = _$_CurrencyRateModel;
 
   @override
   String get name;
@@ -182,6 +164,6 @@ abstract class _CurrencyModel implements CurrencyModel {
   double get rate;
   @override
   @JsonKey(ignore: true)
-  _$$_CurrencyModelCopyWith<_$_CurrencyModel> get copyWith =>
+  _$$_CurrencyRateModelCopyWith<_$_CurrencyRateModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

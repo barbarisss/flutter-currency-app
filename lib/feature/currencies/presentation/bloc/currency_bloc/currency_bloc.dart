@@ -13,11 +13,17 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
     required this.getAllCurrenciesUseCase,
     required this.getAllCurrenciesHistoricalUseCase,
   }) : super(const CurrencyState.initial()) {
-    on<CurrencyEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<GetAllCurrencyEvent>(_onGetAllCurrenciesEvent);
   }
 
   final GetAllCurrenciesUseCase getAllCurrenciesUseCase;
   final GetAllCurrenciesHistoricalUseCase getAllCurrenciesHistoricalUseCase;
+
+  _onGetAllCurrenciesEvent(
+      GetAllCurrencyEvent event, Emitter<CurrencyState> emit) async {
+    emit(const CurrencyState.loading());
+    final response = await getAllCurrenciesUseCase(event.base);
+
+    emit(CurrencyState.loaded(response));
+  }
 }

@@ -1,37 +1,13 @@
 class ApiConfig {
   ApiConfig._();
 
-  static const apiKey = '312c2d3e2f82da3db4f433aa5ef7631b';
-  static const String baseUrl = 'http://data.fixer.io/api/';
+  static const apiKey = 'fca_live_uugSruPjAfiLucIoASdmgCsLOdAJvQs8uOG6glPm';
+  static const String baseUrl = 'https://api.freecurrencyapi.com/v1';
+  static const String currencies = '/currencies';
   static const String latest = '/latest';
-  static const String historical = '/YYYY-MM-DD';
-  static const String timeSeries = '/timeseries';
-  static const String convert = '/convert';
+  static const String historical = '/historical';
   static const header = {
     'Authorization': 'Bearer $apiKey',
     'content-Type': 'application/json',
   };
-  static const List<String> symbols = [
-    'RUB',
-    'KWD',
-    'BHD',
-    'OMR',
-    'JOD',
-    'GBP',
-    'KYD',
-    'EUR',
-    'CHF',
-    'USD',
-    'BSD',
-    'BMD',
-    'PAB',
-    'CAD',
-    'AUD',
-    'SGD',
-    'BND',
-    'NZD',
-    'BGN',
-    'FJD',
-    'BRL',
-  ];
 }

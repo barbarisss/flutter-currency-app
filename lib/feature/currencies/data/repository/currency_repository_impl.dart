@@ -10,7 +10,7 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
 
   @override
   Future<List<CurrencyEntity>> getAllCurrencies(String base) async {
-    final response = await currencyRemoteDataSource.getAllCurrencies(base);
+    final response = await currencyRemoteDataSource.getCurrenciesLatest(base);
 
     //TODO: сделать маппер
     final currencies = response
