@@ -9,8 +9,40 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
 
   @override
   Future<List<CurrencyRateModel>> getCurrenciesInfo() async {
-    // TODO: implement getAllCurrenciesHistorical
-    throw UnimplementedError();
+    Map<String, String> queryParameters = {
+      'apikey': ApiConfig.apiKey,
+    };
+
+    final response = await dioClient.dio.get(
+      ApiConfig.currencies,
+      queryParameters: queryParameters,
+    );
+
+    print(response.toString());
+
+    final dataInfo = response.data['data'] as Map<String, dynamic>;
+
+    print(dataInfo.toString());
+
+    final List<CurrencyRateModel> currenciesRates = [];
+
+    dataInfo.forEach((name, rate) {
+      if (rate is double) {
+        print('rate is double - $rate');
+      } else {
+        print('IIIIIIINT - $rate');
+      }
+
+      currenciesRates.add(
+        CurrencyRateModel(
+          name: name,
+          base: base,
+          rate: rate as double,
+        ),
+      );
+    });
+
+    return currenciesRates;
   }
 
   @override
