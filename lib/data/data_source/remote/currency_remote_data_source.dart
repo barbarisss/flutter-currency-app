@@ -31,6 +31,8 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
       currencyInfoList.add(CurrencyInfoModel.fromJson(value));
     });
 
+    print(currencyInfoList.toString());
+
     return currencyInfoList;
   }
 
