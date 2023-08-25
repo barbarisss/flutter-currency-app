@@ -2,13 +2,14 @@ import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/network/api_config.dart';
 import 'package:currency_app/app/network/dio_client.dart';
 import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
+import 'package:currency_app/data/model/currency_info/currency_info_model.dart';
 import 'package:currency_app/data/model/currency_rate/currency_rate_model.dart';
 
 class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
   final DioClient dioClient = injector<DioClient>();
 
   @override
-  Future<List<CurrencyRateModel>> getCurrenciesInfo() async {
+  Future<List<CurrencyInfoModel>> getCurrenciesInfo() async {
     Map<String, String> queryParameters = {
       'apikey': ApiConfig.apiKey,
     };
@@ -24,25 +25,13 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
 
     print(dataInfo.toString());
 
-    final List<CurrencyRateModel> currenciesRates = [];
+    final List<CurrencyInfoModel> currencyInfoList = [];
 
-    dataInfo.forEach((name, rate) {
-      if (rate is double) {
-        print('rate is double - $rate');
-      } else {
-        print('IIIIIIINT - $rate');
-      }
-
-      currenciesRates.add(
-        CurrencyRateModel(
-          name: name,
-          base: base,
-          rate: rate as double,
-        ),
-      );
+    dataInfo.forEach((key, value) {
+      currencyInfoList.add(CurrencyInfoModel.fromJson(value));
     });
 
-    return currenciesRates;
+    return currencyInfoList;
   }
 
   @override
