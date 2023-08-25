@@ -1,4 +1,3 @@
-import 'package:currency_app/domain/entity/currency_info/currency_info_entity.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/screen/select_base_currency/widgets/base_currencies.dart';
 import 'package:flutter/material.dart';
@@ -10,28 +9,6 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('BUILD SelectBaseCurrencyScreen');
-    final currencies = [
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-      CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
-    ];
 
     late Widget bodyWidget;
 

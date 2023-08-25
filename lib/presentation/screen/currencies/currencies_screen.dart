@@ -1,5 +1,4 @@
 import 'package:currency_app/core/utils/colors.dart';
-import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_list.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_sliver_app_bar.dart';
@@ -17,29 +16,6 @@ class CurrenciesScreen extends StatefulWidget {
 class _CurrenciesScreenState extends State<CurrenciesScreen> {
   @override
   Widget build(BuildContext context) {
-    final currencies = [
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-      CurrencyEntity(name: 'USD', base: 'RUB', rate: 1.299083),
-    ];
-
     late Widget bodyWidget;
 
     return Scaffold(
