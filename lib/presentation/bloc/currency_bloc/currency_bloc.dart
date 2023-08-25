@@ -1,6 +1,6 @@
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/domain/use_case/get_all_currencies_historical_use_case.dart';
-import 'package:currency_app/domain/use_case/get_all_currencies_use_case.dart';
+import 'package:currency_app/domain/use_case/get_currencies_rates_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -16,7 +16,7 @@ class CurrencyBloc extends Bloc<CurrencyEvent, CurrencyState> {
     on<GetAllCurrencyEvent>(_onGetAllCurrenciesEvent);
   }
 
-  final GetAllCurrenciesUseCase getAllCurrenciesUseCase;
+  final GetCurrenciesRatesUseCase getAllCurrenciesUseCase;
   final GetAllCurrenciesHistoricalUseCase getAllCurrenciesHistoricalUseCase;
 
   _onGetAllCurrenciesEvent(

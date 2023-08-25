@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'currency_info_model.dart';
+part of 'currency_info_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CurrencyInfoModel _$CurrencyInfoModelFromJson(Map<String, dynamic> json) {
-  return _CurrencyInfoModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$CurrencyInfoModel {
+mixin _$CurrencyInfoEntity {
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
+  String? get base => throw _privateConstructorUsedError;
+  double? get rate => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CurrencyInfoModelCopyWith<CurrencyInfoModel> get copyWith =>
+  $CurrencyInfoEntityCopyWith<CurrencyInfoEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CurrencyInfoModelCopyWith<$Res> {
-  factory $CurrencyInfoModelCopyWith(
-          CurrencyInfoModel value, $Res Function(CurrencyInfoModel) then) =
-      _$CurrencyInfoModelCopyWithImpl<$Res, CurrencyInfoModel>;
+abstract class $CurrencyInfoEntityCopyWith<$Res> {
+  factory $CurrencyInfoEntityCopyWith(
+          CurrencyInfoEntity value, $Res Function(CurrencyInfoEntity) then) =
+      _$CurrencyInfoEntityCopyWithImpl<$Res, CurrencyInfoEntity>;
   @useResult
-  $Res call({String symbol, String name, String code});
+  $Res call(
+      {String symbol, String name, String code, String? base, double? rate});
 }
 
 /// @nodoc
-class _$CurrencyInfoModelCopyWithImpl<$Res, $Val extends CurrencyInfoModel>
-    implements $CurrencyInfoModelCopyWith<$Res> {
-  _$CurrencyInfoModelCopyWithImpl(this._value, this._then);
+class _$CurrencyInfoEntityCopyWithImpl<$Res, $Val extends CurrencyInfoEntity>
+    implements $CurrencyInfoEntityCopyWith<$Res> {
+  _$CurrencyInfoEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -55,6 +53,8 @@ class _$CurrencyInfoModelCopyWithImpl<$Res, $Val extends CurrencyInfoModel>
     Object? symbol = null,
     Object? name = null,
     Object? code = null,
+    Object? base = freezed,
+    Object? rate = freezed,
   }) {
     return _then(_value.copyWith(
       symbol: null == symbol
@@ -69,27 +69,36 @@ class _$CurrencyInfoModelCopyWithImpl<$Res, $Val extends CurrencyInfoModel>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      base: freezed == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: freezed == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_CurrencyInfoModelCopyWith<$Res>
-    implements $CurrencyInfoModelCopyWith<$Res> {
-  factory _$$_CurrencyInfoModelCopyWith(_$_CurrencyInfoModel value,
-          $Res Function(_$_CurrencyInfoModel) then) =
-      __$$_CurrencyInfoModelCopyWithImpl<$Res>;
+abstract class _$$_CurrencyInfoEntityCopyWith<$Res>
+    implements $CurrencyInfoEntityCopyWith<$Res> {
+  factory _$$_CurrencyInfoEntityCopyWith(_$_CurrencyInfoEntity value,
+          $Res Function(_$_CurrencyInfoEntity) then) =
+      __$$_CurrencyInfoEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String symbol, String name, String code});
+  $Res call(
+      {String symbol, String name, String code, String? base, double? rate});
 }
 
 /// @nodoc
-class __$$_CurrencyInfoModelCopyWithImpl<$Res>
-    extends _$CurrencyInfoModelCopyWithImpl<$Res, _$_CurrencyInfoModel>
-    implements _$$_CurrencyInfoModelCopyWith<$Res> {
-  __$$_CurrencyInfoModelCopyWithImpl(
-      _$_CurrencyInfoModel _value, $Res Function(_$_CurrencyInfoModel) _then)
+class __$$_CurrencyInfoEntityCopyWithImpl<$Res>
+    extends _$CurrencyInfoEntityCopyWithImpl<$Res, _$_CurrencyInfoEntity>
+    implements _$$_CurrencyInfoEntityCopyWith<$Res> {
+  __$$_CurrencyInfoEntityCopyWithImpl(
+      _$_CurrencyInfoEntity _value, $Res Function(_$_CurrencyInfoEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,8 +107,10 @@ class __$$_CurrencyInfoModelCopyWithImpl<$Res>
     Object? symbol = null,
     Object? name = null,
     Object? code = null,
+    Object? base = freezed,
+    Object? rate = freezed,
   }) {
-    return _then(_$_CurrencyInfoModel(
+    return _then(_$_CurrencyInfoEntity(
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -112,18 +123,27 @@ class __$$_CurrencyInfoModelCopyWithImpl<$Res>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      base: freezed == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: freezed == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_CurrencyInfoModel implements _CurrencyInfoModel {
-  _$_CurrencyInfoModel(
-      {required this.symbol, required this.name, required this.code});
 
-  factory _$_CurrencyInfoModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CurrencyInfoModelFromJson(json);
+class _$_CurrencyInfoEntity implements _CurrencyInfoEntity {
+  _$_CurrencyInfoEntity(
+      {required this.symbol,
+      required this.name,
+      required this.code,
+      this.base,
+      this.rate});
 
   @override
   final String symbol;
@@ -131,49 +151,46 @@ class _$_CurrencyInfoModel implements _CurrencyInfoModel {
   final String name;
   @override
   final String code;
+  @override
+  final String? base;
+  @override
+  final double? rate;
 
   @override
   String toString() {
-    return 'CurrencyInfoModel(symbol: $symbol, name: $name, code: $code)';
+    return 'CurrencyInfoEntity(symbol: $symbol, name: $name, code: $code, base: $base, rate: $rate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrencyInfoModel &&
+            other is _$_CurrencyInfoEntity &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.base, base) || other.base == base) &&
+            (identical(other.rate, rate) || other.rate == rate));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, symbol, name, code);
+  int get hashCode => Object.hash(runtimeType, symbol, name, code, base, rate);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrencyInfoModelCopyWith<_$_CurrencyInfoModel> get copyWith =>
-      __$$_CurrencyInfoModelCopyWithImpl<_$_CurrencyInfoModel>(
+  _$$_CurrencyInfoEntityCopyWith<_$_CurrencyInfoEntity> get copyWith =>
+      __$$_CurrencyInfoEntityCopyWithImpl<_$_CurrencyInfoEntity>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CurrencyInfoModelToJson(
-      this,
-    );
-  }
 }
 
-abstract class _CurrencyInfoModel implements CurrencyInfoModel {
-  factory _CurrencyInfoModel(
+abstract class _CurrencyInfoEntity implements CurrencyInfoEntity {
+  factory _CurrencyInfoEntity(
       {required final String symbol,
       required final String name,
-      required final String code}) = _$_CurrencyInfoModel;
-
-  factory _CurrencyInfoModel.fromJson(Map<String, dynamic> json) =
-      _$_CurrencyInfoModel.fromJson;
+      required final String code,
+      final String? base,
+      final double? rate}) = _$_CurrencyInfoEntity;
 
   @override
   String get symbol;
@@ -182,7 +199,11 @@ abstract class _CurrencyInfoModel implements CurrencyInfoModel {
   @override
   String get code;
   @override
+  String? get base;
+  @override
+  double? get rate;
+  @override
   @JsonKey(ignore: true)
-  _$$_CurrencyInfoModelCopyWith<_$_CurrencyInfoModel> get copyWith =>
+  _$$_CurrencyInfoEntityCopyWith<_$_CurrencyInfoEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

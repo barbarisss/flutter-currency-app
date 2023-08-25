@@ -28,7 +28,7 @@ Future<void> initDependencies() async {
 
   // Use Case
   injector.registerLazySingleton(
-    () => GetAllCurrenciesUseCase(currencyRepository: injector()),
+    () => GetCurrenciesRatesUseCase(currencyRepository: injector()),
   );
   injector.registerLazySingleton(
     () => GetAllCurrenciesHistoricalUseCase(currencyRepository: injector()),

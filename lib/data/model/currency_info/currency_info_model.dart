@@ -8,7 +8,7 @@ class CurrencyInfoModel with _$CurrencyInfoModel {
   factory CurrencyInfoModel({
     required String symbol,
     required String name,
-    required double code,
+    required String code,
   }) = _CurrencyInfoModel;
 
   factory CurrencyInfoModel.fromJson(Map<String, dynamic> json) =>

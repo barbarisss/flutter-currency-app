@@ -10,7 +10,7 @@ _$_CurrencyInfoModel _$$_CurrencyInfoModelFromJson(Map<String, dynamic> json) =>
     _$_CurrencyInfoModel(
       symbol: json['symbol'] as String,
       name: json['name'] as String,
-      code: (json['code'] as num).toDouble(),
+      code: json['code'] as String,
     );
 
 Map<String, dynamic> _$$_CurrencyInfoModelToJson(
