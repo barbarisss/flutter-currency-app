@@ -4,8 +4,10 @@ import 'package:currency_app/data/data_source/remote/currency_remote_data_source
 import 'package:currency_app/data/repository/currency_repository_impl.dart';
 import 'package:currency_app/domain/repository/currency_repository.dart';
 import 'package:currency_app/domain/use_case/get_all_currencies_historical_use_case.dart';
+import 'package:currency_app/domain/use_case/get_currencies_info_use_case.dart';
 import 'package:currency_app/domain/use_case/get_currencies_rates_use_case.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -31,6 +33,9 @@ Future<void> initDependencies() async {
     () => GetCurrenciesRatesUseCase(currencyRepository: injector()),
   );
   injector.registerLazySingleton(
+    () => GetCurrenciesInfoUseCase(currencyRepository: injector()),
+  );
+  injector.registerLazySingleton(
     () => GetAllCurrenciesHistoricalUseCase(currencyRepository: injector()),
   );
 
@@ -39,6 +44,11 @@ Future<void> initDependencies() async {
     () => CurrencyBloc(
       getAllCurrenciesUseCase: injector(),
       getAllCurrenciesHistoricalUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => CurrencyInfoBloc(
+      getCurrenciesInfoUseCase: injector(),
     ),
   );
 }

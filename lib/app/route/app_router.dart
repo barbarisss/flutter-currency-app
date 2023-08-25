@@ -37,8 +37,8 @@ class AppRouter {
             name: selectBaseCurrency,
             path: selectBaseCurrency,
             builder: (context, state) => BlocProvider(
-              create: (context) => CurrencyInfoBloc(),
-              // create: (context) => CurrencyInfoBloc()..add(const GetCurrenciesInfoEvent()),
+              create: (context) => injector<CurrencyInfoBloc>()
+                ..add(const GetCurrenciesInfoEvent()),
               child: const SelectBaseCurrencyScreen(),
             ),
           ),
