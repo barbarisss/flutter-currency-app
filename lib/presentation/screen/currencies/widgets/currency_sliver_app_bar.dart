@@ -1,3 +1,4 @@
+import 'package:currency_app/app/route/app_router.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class CurrencySliverAppBar extends StatefulWidget {
@@ -25,6 +27,9 @@ class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
     return BlocBuilder<CurrencyBloc, CurrencyState>(
       builder: (context, state) {
         print('Sliver AppBar BUILD');
+        if (state == const CurrencyState.initial()) {
+          print('initial state');
+        }
         // BlocProvider.of<CurrencyBloc>(context)
         //     .add(const GetAllCurrencyEvent('RUB'));
         return SliverAppBar(
@@ -62,7 +67,9 @@ class _BaseCurrencyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.goNamed(AppRouter.selectBaseCurrency);
+      },
       child: Row(
         children: [
           Text(

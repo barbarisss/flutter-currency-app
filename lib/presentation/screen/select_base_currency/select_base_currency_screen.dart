@@ -7,6 +7,7 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('BUILD SelectBaseCurrencyScreen');
     final currencies = [
       CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),
       CurrencyInfoEntity(name: 'Dollar', symbol: 'S', code: 'USD'),

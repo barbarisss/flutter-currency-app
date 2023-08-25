@@ -1,3 +1,4 @@
+import 'package:currency_app/app/route/app_router.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
@@ -26,7 +27,7 @@ class CurrencyListWidget extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              context.goNamed('details', extra: currencies[index]);
+              context.goNamed(AppRouter.details, extra: currencies[index]);
             },
             child: Row(
               children: [

@@ -17,6 +17,7 @@ class BaseCurrenciesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('BUILD BaseCurrenciesWidget');
     return ListView.separated(
       itemCount: currencies.length,
       itemBuilder: (context, index) {
