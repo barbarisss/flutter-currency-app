@@ -1,5 +1,6 @@
 import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/screen/currencies/currencies_screen.dart';
@@ -16,12 +17,9 @@ class AppRouter {
     // initialLocation: currenciesRoute,
     routes: [
       GoRoute(
+        name: 'root',
         path: '/',
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              injector<CurrencyBloc>()..add(const GetAllCurrencyEvent('RUB')),
-          child: const CurrenciesScreen(),
-        ),
+        builder: (context, state) => const CurrenciesScreen(),
         routes: [
           GoRoute(
             name: details,
@@ -36,11 +34,7 @@ class AppRouter {
           GoRoute(
             name: selectBaseCurrency,
             path: selectBaseCurrency,
-            builder: (context, state) => BlocProvider(
-              create: (context) => injector<CurrencyInfoBloc>()
-                ..add(const GetCurrenciesInfoEvent()),
-              child: const SelectBaseCurrencyScreen(),
-            ),
+            builder: (context, state) => const SelectBaseCurrencyScreen(),
           ),
         ],
       ),

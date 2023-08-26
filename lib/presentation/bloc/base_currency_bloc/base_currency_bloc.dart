@@ -12,7 +12,9 @@ class BaseCurrencyBloc extends Bloc<BaseCurrencyEvent, BaseCurrencyState> {
 
   _onSelectBaseCurrencyEvent(
       SelectBaseCurrencyEvent event, Emitter<BaseCurrencyState> emit) {
+    print('SelectBaseCurrencyEvent RIGHT NOWWWW!!!!!');
     final selectedBase = event.base;
+    print(selectedBase);
     emit(BaseCurrencyState.afterSelect(selectedBase));
   }
 }

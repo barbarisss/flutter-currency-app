@@ -6,6 +6,7 @@ import 'package:currency_app/domain/repository/currency_repository.dart';
 import 'package:currency_app/domain/use_case/get_all_currencies_historical_use_case.dart';
 import 'package:currency_app/domain/use_case/get_currencies_info_use_case.dart';
 import 'package:currency_app/domain/use_case/get_currencies_rates_use_case.dart';
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:dio/dio.dart';
@@ -50,5 +51,8 @@ Future<void> initDependencies() async {
     () => CurrencyInfoBloc(
       getCurrenciesInfoUseCase: injector(),
     ),
+  );
+  injector.registerFactory(
+    () => BaseCurrencyBloc(),
   );
 }

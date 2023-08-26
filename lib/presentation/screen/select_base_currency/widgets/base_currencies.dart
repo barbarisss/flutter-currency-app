@@ -1,18 +1,18 @@
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/domain/entity/currency_info/currency_info_entity.dart';
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class BaseCurrenciesWidget extends StatelessWidget {
   const BaseCurrenciesWidget({
     super.key,
-    required this.onTap,
     required this.currencies,
   });
 
-  final GestureTapCallback onTap;
   final List<CurrencyInfoEntity> currencies;
 
   @override
@@ -25,23 +25,29 @@ class BaseCurrenciesWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: AppConstants.mainPaddingWidth,
           ),
-          child: GestureDetector(
-            onTap: () {
-              context.pop();
-            },
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    currencies[index].name,
-                    style: TextStyle(
-                      fontSize: 28.sp,
-                      fontWeight: FontWeight.w500,
+          child: BlocBuilder<BaseCurrencyBloc, BaseCurrencyState>(
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () {
+                  BlocProvider.of<BaseCurrencyBloc>(context)
+                      .add(SelectBaseCurrencyEvent(currencies[index].code));
+                  context.pop();
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        currencies[index].name,
+                        style: TextStyle(
+                          fontSize: 28.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         );
       },

@@ -1,3 +1,4 @@
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/screen/select_base_currency/widgets/base_currencies.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +29,12 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
               );
             },
             loaded: (currencies) {
-              bodyWidget = BaseCurrenciesWidget(
-                currencies: currencies,
-                onTap: () {},
+              bodyWidget = BlocBuilder<BaseCurrencyBloc, BaseCurrencyState>(
+                builder: (context, state) {
+                  return BaseCurrenciesWidget(
+                    currencies: currencies,
+                  );
+                },
               );
             },
           );

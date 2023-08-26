@@ -15,6 +15,13 @@ class CurrenciesScreen extends StatefulWidget {
 
 class _CurrenciesScreenState extends State<CurrenciesScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    print('THIS IS INIT STATE!!!!');
+  }
+
+  @override
   Widget build(BuildContext context) {
     late Widget bodyWidget;
 

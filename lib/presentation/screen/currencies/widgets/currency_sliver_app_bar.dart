@@ -1,7 +1,9 @@
 import 'package:currency_app/app/route/app_router.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
@@ -24,39 +26,29 @@ class CurrencySliverAppBar extends StatefulWidget {
 class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrencyBloc, CurrencyState>(
-      builder: (context, state) {
-        print('Sliver AppBar BUILD');
-        if (state == const CurrencyState.initial()) {
-          print('initial state');
-        }
-        // BlocProvider.of<CurrencyBloc>(context)
-        //     .add(const GetAllCurrencyEvent('RUB'));
-        return SliverAppBar(
-          expandedHeight: widget.expandedHeight,
-          backgroundColor: AppColors.white,
-          floating: true,
-          forceElevated: true,
-          elevation: 20.h,
-          shadowColor: AppColors.shadowGrey,
-          flexibleSpace: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.mainPaddingWidth,
-            ),
-            child: const Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _BaseCurrencyWidget(),
-                  _SetDateWidget(
-                    text: 'Set the date',
-                  )
-                ],
-              ),
-            ),
+    return SliverAppBar(
+      expandedHeight: widget.expandedHeight,
+      backgroundColor: AppColors.white,
+      floating: true,
+      forceElevated: true,
+      elevation: 20.h,
+      shadowColor: AppColors.shadowGrey,
+      flexibleSpace: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppConstants.mainPaddingWidth,
+        ),
+        child: const Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _BaseCurrencyWidget(),
+              _SetDateWidget(
+                text: 'Set the date',
+              )
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
@@ -66,26 +58,50 @@ class _BaseCurrencyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.goNamed(AppRouter.selectBaseCurrency);
+    // late Widget currentBase;
+
+    return BlocBuilder<CurrencyBloc, CurrencyState>(
+      builder: (context, state) {
+        return BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
+          builder: (context, state) {
+            return GestureDetector(
+              onTap: () {
+                context.goNamed(AppRouter.selectBaseCurrency);
+                BlocProvider.of<CurrencyInfoBloc>(context)
+                    .add(const GetCurrenciesInfoEvent());
+              },
+              child: Row(
+                children: [
+                  BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
+                    builder: (context, state) {
+                      print('BaseCurrencyWidget BUILD');
+                      final currentBase = state.base;
+
+                      return Text(
+                        currentBase,
+                        style: TextStyle(
+                          color: AppColors.black,
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    },
+                    listener: (context, state) {
+                      print('BaseCurrencyBlocListener HERE WE ARE)))');
+                      BlocProvider.of<CurrencyBloc>(context)
+                          .add(GetAllCurrencyEvent(state.base));
+                    },
+                  ),
+                  Icon(
+                    Icons.arrow_drop_down_rounded,
+                    size: 36.r,
+                  ),
+                ],
+              ),
+            );
+          },
+        );
       },
-      child: Row(
-        children: [
-          Text(
-            'RUB',
-            style: TextStyle(
-              color: AppColors.black,
-              fontSize: 32.sp,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Icon(
-            Icons.arrow_drop_down_rounded,
-            size: 36.r,
-          ),
-        ],
-      ),
     );
   }
 }
