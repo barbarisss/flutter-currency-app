@@ -1,11 +1,14 @@
 import 'package:currency_app/app/network/dio_client.dart';
-import 'package:currency_app/feature/currencies/data/data_source/remote/base_currency_remote_data_source.dart';
-import 'package:currency_app/feature/currencies/data/data_source/remote/currency_remote_data_source.dart';
-import 'package:currency_app/feature/currencies/data/repository/currency_repository_impl.dart';
-import 'package:currency_app/feature/currencies/domain/repository/currency_repository.dart';
-import 'package:currency_app/feature/currencies/domain/use_case/get_all_currencies_historical_use_case.dart';
-import 'package:currency_app/feature/currencies/domain/use_case/get_all_currencies_use_case.dart';
-import 'package:currency_app/feature/currencies/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
+import 'package:currency_app/data/data_source/remote/currency_remote_data_source.dart';
+import 'package:currency_app/data/repository/currency_repository_impl.dart';
+import 'package:currency_app/domain/repository/currency_repository.dart';
+import 'package:currency_app/domain/use_case/get_all_currencies_historical_use_case.dart';
+import 'package:currency_app/domain/use_case/get_currencies_info_use_case.dart';
+import 'package:currency_app/domain/use_case/get_currencies_rates_use_case.dart';
+import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -28,7 +31,10 @@ Future<void> initDependencies() async {
 
   // Use Case
   injector.registerLazySingleton(
-    () => GetAllCurrenciesUseCase(currencyRepository: injector()),
+    () => GetCurrenciesRatesUseCase(currencyRepository: injector()),
+  );
+  injector.registerLazySingleton(
+    () => GetCurrenciesInfoUseCase(currencyRepository: injector()),
   );
   injector.registerLazySingleton(
     () => GetAllCurrenciesHistoricalUseCase(currencyRepository: injector()),
@@ -40,5 +46,13 @@ Future<void> initDependencies() async {
       getAllCurrenciesUseCase: injector(),
       getAllCurrenciesHistoricalUseCase: injector(),
     ),
+  );
+  injector.registerFactory(
+    () => CurrencyInfoBloc(
+      getCurrenciesInfoUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => BaseCurrencyBloc(),
   );
 }
