@@ -24,11 +24,11 @@ class CurrencyListWidget extends StatelessWidget {
         final name = currencies[index].name;
         final symbol = currencies[index].symbol;
         // TODO: подумать над другим вариком(!)
-        final rate = currencies[index].rate!.toStringAsFixed(5);
+        final rate = currencies[index].rate!.toStringAsFixed(3);
         return Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: AppConstants.mainPaddingWidth,
-          ),
+              horizontal: AppConstants.mainPaddingWidth,
+              vertical: AppConstants.mainPaddingHeight / 2),
           child: GestureDetector(
             onTap: () {
               context.goNamed(AppRouter.details, extra: currencies[index]);
@@ -36,18 +36,41 @@ class CurrencyListWidget extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: Text(
-                    '$name $symbol',
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w500,
+                  child: RichText(
+                    text: TextSpan(
+                      text: '$name ',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: AppColors.black,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: '(',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                        TextSpan(
+                          text: symbol,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: ')',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Text(
                   rate,
                   style: TextStyle(
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                   ),
                 ),
                 SizedBox(width: AppConstants.mainPaddingWidth),
@@ -60,6 +83,7 @@ class CurrencyListWidget extends StatelessWidget {
       separatorBuilder: (context, index) {
         return const Divider(
           color: AppColors.grey,
+          height: 1,
         );
       },
     );
