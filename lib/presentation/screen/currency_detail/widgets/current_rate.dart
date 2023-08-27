@@ -25,7 +25,8 @@ class CurrentRateWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              currency.base,
+              // TODO: подумать над другим вариком(!)
+              '${currency.base}',
               style: TextStyle(
                 fontSize: 28.sp,
                 fontWeight: FontWeight.w500,
@@ -38,6 +39,7 @@ class CurrentRateWidget extends StatelessWidget {
             ),
             SizedBox(width: 4.w),
             Text(
+              // TODO: подумать над другим вариком(!)
               '${currency.rate} ',
               style: TextStyle(
                 fontSize: 28.sp,

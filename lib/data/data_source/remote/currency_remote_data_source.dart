@@ -48,8 +48,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
       queryParameters: queryParameters,
     );
 
-    print(response.toString());
-
     final dataRates = response.data['data'] as Map<String, dynamic>;
 
     print(dataRates.toString());
@@ -57,20 +55,19 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
     final List<CurrencyRateModel> currenciesRates = [];
 
     dataRates.forEach((name, rate) {
-      if (rate is double) {
-        print('rate is double - $rate');
-      } else {
-        print('IIIIIIINT - $rate');
+      var currentRate = rate;
+
+      if (rate is int) {
+        currentRate = rate.toDouble();
       }
-      if (name != base) {
-        currenciesRates.add(
-          CurrencyRateModel(
-            name: name,
-            base: base,
-            rate: rate as double,
-          ),
-        );
-      }
+
+      currenciesRates.add(
+        CurrencyRateModel(
+          name: name,
+          base: base,
+          rate: currentRate,
+        ),
+      );
     });
 
     return currenciesRates;

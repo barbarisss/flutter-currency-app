@@ -4,6 +4,6 @@ part of 'currency_info_bloc.dart';
 class CurrencyInfoState with _$CurrencyInfoState {
   const factory CurrencyInfoState.initial() = _InitialCurrencyInfoState;
   const factory CurrencyInfoState.loading() = _LoadingCurrencyInfoState;
-  const factory CurrencyInfoState.loaded(List<CurrencyInfoEntity> currencies) =
+  const factory CurrencyInfoState.loaded(List<CurrencyEntity> currencies) =
       _LoadedCurrencyInfoState;
 }

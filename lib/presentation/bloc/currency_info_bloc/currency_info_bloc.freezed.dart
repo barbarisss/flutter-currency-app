@@ -170,21 +170,21 @@ mixin _$CurrencyInfoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CurrencyInfoEntity> currencies) loaded,
+    required TResult Function(List<CurrencyEntity> currencies) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult? Function(List<CurrencyEntity> currencies)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult Function(List<CurrencyEntity> currencies)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -272,7 +272,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CurrencyInfoEntity> currencies) loaded,
+    required TResult Function(List<CurrencyEntity> currencies) loaded,
   }) {
     return initial();
   }
@@ -282,7 +282,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult? Function(List<CurrencyEntity> currencies)? loaded,
   }) {
     return initial?.call();
   }
@@ -292,7 +292,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult Function(List<CurrencyEntity> currencies)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -382,7 +382,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CurrencyInfoEntity> currencies) loaded,
+    required TResult Function(List<CurrencyEntity> currencies) loaded,
   }) {
     return loading();
   }
@@ -392,7 +392,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult? Function(List<CurrencyEntity> currencies)? loaded,
   }) {
     return loading?.call();
   }
@@ -402,7 +402,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult Function(List<CurrencyEntity> currencies)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -456,7 +456,7 @@ abstract class _$$_LoadedCurrencyInfoStateCopyWith<$Res> {
           $Res Function(_$_LoadedCurrencyInfoState) then) =
       __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CurrencyInfoEntity> currencies});
+  $Res call({List<CurrencyEntity> currencies});
 }
 
 /// @nodoc
@@ -476,7 +476,7 @@ class __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>
       null == currencies
           ? _value._currencies
           : currencies // ignore: cast_nullable_to_non_nullable
-              as List<CurrencyInfoEntity>,
+              as List<CurrencyEntity>,
     ));
   }
 }
@@ -484,12 +484,12 @@ class __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
-  const _$_LoadedCurrencyInfoState(final List<CurrencyInfoEntity> currencies)
+  const _$_LoadedCurrencyInfoState(final List<CurrencyEntity> currencies)
       : _currencies = currencies;
 
-  final List<CurrencyInfoEntity> _currencies;
+  final List<CurrencyEntity> _currencies;
   @override
-  List<CurrencyInfoEntity> get currencies {
+  List<CurrencyEntity> get currencies {
     if (_currencies is EqualUnmodifiableListView) return _currencies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_currencies);
@@ -526,7 +526,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CurrencyInfoEntity> currencies) loaded,
+    required TResult Function(List<CurrencyEntity> currencies) loaded,
   }) {
     return loaded(currencies);
   }
@@ -536,7 +536,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult? Function(List<CurrencyEntity> currencies)? loaded,
   }) {
     return loaded?.call(currencies);
   }
@@ -546,7 +546,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CurrencyInfoEntity> currencies)? loaded,
+    TResult Function(List<CurrencyEntity> currencies)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -592,9 +592,9 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
 
 abstract class _LoadedCurrencyInfoState implements CurrencyInfoState {
   const factory _LoadedCurrencyInfoState(
-      final List<CurrencyInfoEntity> currencies) = _$_LoadedCurrencyInfoState;
+      final List<CurrencyEntity> currencies) = _$_LoadedCurrencyInfoState;
 
-  List<CurrencyInfoEntity> get currencies;
+  List<CurrencyEntity> get currencies;
   @JsonKey(ignore: true)
   _$$_LoadedCurrencyInfoStateCopyWith<_$_LoadedCurrencyInfoState>
       get copyWith => throw _privateConstructorUsedError;
