@@ -21,6 +21,10 @@ class CurrencyListWidget extends StatelessWidget {
     return SliverList.separated(
       itemCount: currencies.length,
       itemBuilder: (context, index) {
+        final name = currencies[index].name;
+        final symbol = currencies[index].symbol;
+        // TODO: подумать над другим вариком(!)
+        final rate = currencies[index].rate!.toStringAsFixed(5);
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: AppConstants.mainPaddingWidth,
@@ -33,15 +37,15 @@ class CurrencyListWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    currencies[index].name,
+                    '$name $symbol',
                     style: TextStyle(
-                      fontSize: 28.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
                 Text(
-                  '${currencies[index].rate}',
+                  rate,
                   style: TextStyle(
                     fontSize: 20.sp,
                   ),

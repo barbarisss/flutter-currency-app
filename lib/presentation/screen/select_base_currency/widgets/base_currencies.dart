@@ -1,6 +1,6 @@
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
-import 'package:currency_app/domain/entity/currency_info/currency_info_entity.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +13,7 @@ class BaseCurrenciesWidget extends StatelessWidget {
     required this.currencies,
   });
 
-  final List<CurrencyInfoEntity> currencies;
+  final List<CurrencyEntity> currencies;
 
   @override
   Widget build(BuildContext context) {

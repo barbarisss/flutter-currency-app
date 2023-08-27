@@ -16,9 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CurrencyEntity {
+  String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get base => throw _privateConstructorUsedError;
-  double get rate => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
+  String? get base => throw _privateConstructorUsedError;
+  double? get rate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CurrencyEntityCopyWith<CurrencyEntity> get copyWith =>
@@ -31,7 +33,8 @@ abstract class $CurrencyEntityCopyWith<$Res> {
           CurrencyEntity value, $Res Function(CurrencyEntity) then) =
       _$CurrencyEntityCopyWithImpl<$Res, CurrencyEntity>;
   @useResult
-  $Res call({String name, String base, double rate});
+  $Res call(
+      {String symbol, String name, String code, String? base, double? rate});
 }
 
 /// @nodoc
@@ -47,23 +50,33 @@ class _$CurrencyEntityCopyWithImpl<$Res, $Val extends CurrencyEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? symbol = null,
     Object? name = null,
-    Object? base = null,
-    Object? rate = null,
+    Object? code = null,
+    Object? base = freezed,
+    Object? rate = freezed,
   }) {
     return _then(_value.copyWith(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      base: null == base
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      base: freezed == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
-              as String,
-      rate: null == rate
+              as String?,
+      rate: freezed == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ) as $Val);
   }
 }
@@ -76,7 +89,8 @@ abstract class _$$_CurrencyEntityCopyWith<$Res>
       __$$_CurrencyEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String base, double rate});
+  $Res call(
+      {String symbol, String name, String code, String? base, double? rate});
 }
 
 /// @nodoc
@@ -90,23 +104,33 @@ class __$$_CurrencyEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? symbol = null,
     Object? name = null,
-    Object? base = null,
-    Object? rate = null,
+    Object? code = null,
+    Object? base = freezed,
+    Object? rate = freezed,
   }) {
     return _then(_$_CurrencyEntity(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      base: null == base
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      base: freezed == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
-              as String,
-      rate: null == rate
+              as String?,
+      rate: freezed == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -115,18 +139,26 @@ class __$$_CurrencyEntityCopyWithImpl<$Res>
 
 class _$_CurrencyEntity implements _CurrencyEntity {
   _$_CurrencyEntity(
-      {required this.name, required this.base, required this.rate});
+      {required this.symbol,
+      required this.name,
+      required this.code,
+      this.base,
+      this.rate});
 
+  @override
+  final String symbol;
   @override
   final String name;
   @override
-  final String base;
+  final String code;
   @override
-  final double rate;
+  final String? base;
+  @override
+  final double? rate;
 
   @override
   String toString() {
-    return 'CurrencyEntity(name: $name, base: $base, rate: $rate)';
+    return 'CurrencyEntity(symbol: $symbol, name: $name, code: $code, base: $base, rate: $rate)';
   }
 
   @override
@@ -134,13 +166,15 @@ class _$_CurrencyEntity implements _CurrencyEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CurrencyEntity &&
+            (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.base, base) || other.base == base) &&
             (identical(other.rate, rate) || other.rate == rate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, base, rate);
+  int get hashCode => Object.hash(runtimeType, symbol, name, code, base, rate);
 
   @JsonKey(ignore: true)
   @override
@@ -151,16 +185,22 @@ class _$_CurrencyEntity implements _CurrencyEntity {
 
 abstract class _CurrencyEntity implements CurrencyEntity {
   factory _CurrencyEntity(
-      {required final String name,
-      required final String base,
-      required final double rate}) = _$_CurrencyEntity;
+      {required final String symbol,
+      required final String name,
+      required final String code,
+      final String? base,
+      final double? rate}) = _$_CurrencyEntity;
 
+  @override
+  String get symbol;
   @override
   String get name;
   @override
-  String get base;
+  String get code;
   @override
-  double get rate;
+  String? get base;
+  @override
+  double? get rate;
   @override
   @JsonKey(ignore: true)
   _$$_CurrencyEntityCopyWith<_$_CurrencyEntity> get copyWith =>

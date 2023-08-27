@@ -1,4 +1,4 @@
-import 'package:currency_app/domain/entity/currency_info/currency_info_entity.dart';
+import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/domain/repository/currency_repository.dart';
 
 class GetCurrenciesInfoUseCase {
@@ -6,7 +6,7 @@ class GetCurrenciesInfoUseCase {
 
   final CurrencyRepository currencyRepository;
 
-  Future<List<CurrencyInfoEntity>> call() async {
+  Future<List<CurrencyEntity>> call() async {
     return await currencyRepository.getCurrenciesInfo();
   }
 }
