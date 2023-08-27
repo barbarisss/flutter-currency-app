@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectBaseCurrencyScreen extends StatelessWidget {
-  const SelectBaseCurrencyScreen({super.key});
+  const SelectBaseCurrencyScreen({
+    super.key,
+    required this.currentBase,
+  });
+
+  final String currentBase;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,7 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
                 builder: (context, state) {
                   return BaseCurrenciesWidget(
                     currencies: currencies,
+                    currentBase: currentBase,
                   );
                 },
               );

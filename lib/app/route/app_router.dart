@@ -34,7 +34,12 @@ class AppRouter {
           GoRoute(
             name: selectBaseCurrency,
             path: selectBaseCurrency,
-            builder: (context, state) => const SelectBaseCurrencyScreen(),
+            builder: (context, state) {
+              String base = state.extra as String;
+              return SelectBaseCurrencyScreen(
+                currentBase: base,
+              );
+            },
           ),
         ],
       ),

@@ -58,46 +58,45 @@ class _BaseCurrencyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // late Widget currentBase;
-
     return BlocBuilder<CurrencyBloc, CurrencyState>(
       builder: (context, state) {
         return BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
           builder: (context, state) {
-            return GestureDetector(
-              onTap: () {
-                context.goNamed(AppRouter.selectBaseCurrency);
-                BlocProvider.of<CurrencyInfoBloc>(context)
-                    .add(const GetCurrenciesInfoEvent());
-              },
-              child: Row(
-                children: [
-                  BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
-                    builder: (context, state) {
-                      print('BaseCurrencyWidget BUILD');
-                      final currentBase = state.base;
+            return BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
+              builder: (context, state) {
+                print('BaseCurrencyWidget BUILD');
+                final currentBase = state.base;
 
-                      return Text(
+                return GestureDetector(
+                  onTap: () {
+                    context.goNamed(AppRouter.selectBaseCurrency,
+                        extra: currentBase);
+                    BlocProvider.of<CurrencyInfoBloc>(context)
+                        .add(const GetCurrenciesInfoEvent());
+                  },
+                  child: Row(
+                    children: [
+                      Text(
                         currentBase,
                         style: TextStyle(
                           color: AppColors.black,
                           fontSize: 32.sp,
                           fontWeight: FontWeight.w500,
                         ),
-                      );
-                    },
-                    listener: (context, state) {
-                      print('BaseCurrencyBlocListener HERE WE ARE)))');
-                      BlocProvider.of<CurrencyBloc>(context)
-                          .add(GetAllCurrencyEvent(state.base));
-                    },
+                      ),
+                      Icon(
+                        Icons.arrow_drop_down_rounded,
+                        size: 36.r,
+                      ),
+                    ],
                   ),
-                  Icon(
-                    Icons.arrow_drop_down_rounded,
-                    size: 36.r,
-                  ),
-                ],
-              ),
+                );
+              },
+              listener: (context, state) {
+                print('BaseCurrencyBlocListener HERE WE ARE)))');
+                BlocProvider.of<CurrencyBloc>(context)
+                    .add(GetAllCurrencyEvent(state.base));
+              },
             );
           },
         );

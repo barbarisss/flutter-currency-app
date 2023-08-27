@@ -11,8 +11,10 @@ class BaseCurrenciesWidget extends StatelessWidget {
   const BaseCurrenciesWidget({
     super.key,
     required this.currencies,
+    required this.currentBase,
   });
 
+  final String currentBase;
   final List<CurrencyEntity> currencies;
 
   @override
@@ -24,9 +26,14 @@ class BaseCurrenciesWidget extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: AppConstants.mainPaddingWidth,
+            vertical: AppConstants.mainPaddingHeight / 2,
           ),
           child: BlocBuilder<BaseCurrencyBloc, BaseCurrencyState>(
             builder: (context, state) {
+              final name = currencies[index].name;
+              final symbol = currencies[index].symbol;
+              final code = currencies[index].code;
+
               return GestureDetector(
                 onTap: () {
                   BlocProvider.of<BaseCurrencyBloc>(context)
@@ -36,14 +43,40 @@ class BaseCurrenciesWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Text(
-                        currencies[index].name,
-                        style: TextStyle(
-                          fontSize: 28.sp,
-                          fontWeight: FontWeight.w500,
+                      child: RichText(
+                        text: TextSpan(
+                          text: '$name ',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            color: AppColors.black,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: '(',
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                            TextSpan(
+                              text: symbol,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ')',
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
+                    code == currentBase
+                        ? const Icon(Icons.check_box_outlined)
+                        : const Icon(Icons.check_box_outline_blank),
                   ],
                 ),
               );
@@ -52,8 +85,9 @@ class BaseCurrenciesWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return const Divider(
+        return Divider(
           color: AppColors.grey,
+          height: 1.h,
         );
       },
     );

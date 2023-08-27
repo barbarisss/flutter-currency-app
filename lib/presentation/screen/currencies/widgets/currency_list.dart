@@ -27,8 +27,9 @@ class CurrencyListWidget extends StatelessWidget {
         final rate = currencies[index].rate!.toStringAsFixed(3);
         return Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: AppConstants.mainPaddingWidth,
-              vertical: AppConstants.mainPaddingHeight / 2),
+            horizontal: AppConstants.mainPaddingWidth,
+            vertical: AppConstants.mainPaddingHeight / 2,
+          ),
           child: GestureDetector(
             onTap: () {
               context.goNamed(AppRouter.details, extra: currencies[index]);
@@ -81,9 +82,9 @@ class CurrencyListWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) {
-        return const Divider(
+        return Divider(
           color: AppColors.grey,
-          height: 1,
+          height: 1.h,
         );
       },
     );
