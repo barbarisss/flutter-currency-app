@@ -4,8 +4,10 @@ import 'package:currency_app/domain/entity/currency_detail/currency_detail_entit
 abstract class CurrencyRepository {
   Future<List<CurrencyEntity>> getCurrenciesInfo();
   Future<List<CurrencyEntity>> getCurrenciesRates(String base);
-  Future<List<CurrencyEntity>> getAllCurrenciesHistorical(
-      String base, DateTime date);
-  Future<CurrencyDetailEntity> getCurrencyDetail(
-      String base, DateTime startDate, DateTime endDate);
+  Future<List<CurrencyDetailEntity>> getCurrencyTimeSeries(
+    String base,
+    String currencyCode,
+    DateTime dateFrom,
+    DateTime dateTo,
+  );
 }

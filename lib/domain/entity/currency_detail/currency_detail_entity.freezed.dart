@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CurrencyDetailEntity {
-  Map<String, double> get timeSeriesRate => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
+  double get rate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CurrencyDetailEntityCopyWith<CurrencyDetailEntity> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $CurrencyDetailEntityCopyWith<$Res> {
           $Res Function(CurrencyDetailEntity) then) =
       _$CurrencyDetailEntityCopyWithImpl<$Res, CurrencyDetailEntity>;
   @useResult
-  $Res call({Map<String, double> timeSeriesRate});
+  $Res call({DateTime date, double rate});
 }
 
 /// @nodoc
@@ -46,13 +47,18 @@ class _$CurrencyDetailEntityCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timeSeriesRate = null,
+    Object? date = null,
+    Object? rate = null,
   }) {
     return _then(_value.copyWith(
-      timeSeriesRate: null == timeSeriesRate
-          ? _value.timeSeriesRate
-          : timeSeriesRate // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_CurrencyDetailEntityCopyWith<$Res>
       __$$_CurrencyDetailEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, double> timeSeriesRate});
+  $Res call({DateTime date, double rate});
 }
 
 /// @nodoc
@@ -79,13 +85,18 @@ class __$$_CurrencyDetailEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timeSeriesRate = null,
+    Object? date = null,
+    Object? rate = null,
   }) {
     return _then(_$_CurrencyDetailEntity(
-      timeSeriesRate: null == timeSeriesRate
-          ? _value._timeSeriesRate
-          : timeSeriesRate // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -93,20 +104,16 @@ class __$$_CurrencyDetailEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CurrencyDetailEntity implements _CurrencyDetailEntity {
-  _$_CurrencyDetailEntity({required final Map<String, double> timeSeriesRate})
-      : _timeSeriesRate = timeSeriesRate;
+  _$_CurrencyDetailEntity({required this.date, required this.rate});
 
-  final Map<String, double> _timeSeriesRate;
   @override
-  Map<String, double> get timeSeriesRate {
-    if (_timeSeriesRate is EqualUnmodifiableMapView) return _timeSeriesRate;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_timeSeriesRate);
-  }
+  final DateTime date;
+  @override
+  final double rate;
 
   @override
   String toString() {
-    return 'CurrencyDetailEntity(timeSeriesRate: $timeSeriesRate)';
+    return 'CurrencyDetailEntity(date: $date, rate: $rate)';
   }
 
   @override
@@ -114,13 +121,12 @@ class _$_CurrencyDetailEntity implements _CurrencyDetailEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CurrencyDetailEntity &&
-            const DeepCollectionEquality()
-                .equals(other._timeSeriesRate, _timeSeriesRate));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.rate, rate) || other.rate == rate));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_timeSeriesRate));
+  int get hashCode => Object.hash(runtimeType, date, rate);
 
   @JsonKey(ignore: true)
   @override
@@ -132,11 +138,13 @@ class _$_CurrencyDetailEntity implements _CurrencyDetailEntity {
 
 abstract class _CurrencyDetailEntity implements CurrencyDetailEntity {
   factory _CurrencyDetailEntity(
-          {required final Map<String, double> timeSeriesRate}) =
-      _$_CurrencyDetailEntity;
+      {required final DateTime date,
+      required final double rate}) = _$_CurrencyDetailEntity;
 
   @override
-  Map<String, double> get timeSeriesRate;
+  DateTime get date;
+  @override
+  double get rate;
   @override
   @JsonKey(ignore: true)
   _$$_CurrencyDetailEntityCopyWith<_$_CurrencyDetailEntity> get copyWith =>

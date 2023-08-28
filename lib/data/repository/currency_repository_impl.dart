@@ -69,16 +69,26 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
   }
 
   @override
-  Future<List<CurrencyEntity>> getAllCurrenciesHistorical(
-      String base, DateTime date) {
-    // TODO: implement getAllCurrenciesHistorical
-    throw UnimplementedError();
-  }
+  Future<List<CurrencyDetailEntity>> getCurrencyTimeSeries(
+    String base,
+    String currencyCode,
+    DateTime dateFrom,
+    DateTime dateTo,
+  ) async {
+    final response = await currencyRemoteDataSource.getCurrencyTimeSeries(
+      base,
+      currencyCode,
+      dateFrom,
+      dateTo,
+    );
 
-  @override
-  Future<CurrencyDetailEntity> getCurrencyDetail(
-      String base, DateTime startDate, DateTime endDate) {
-    // TODO: implement getCurrencyDetail
-    throw UnimplementedError();
+    //TODO: сделать маппер
+    final currencyTimeRates = response
+        .map((item) => CurrencyDetailEntity(
+              date: item.date,
+              rate: item.rate,
+            ))
+        .toList();
+    return currencyTimeRates;
   }
 }
