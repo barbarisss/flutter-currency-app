@@ -30,9 +30,11 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            CurrencySliverAppBar(
-              expandedHeight: 76.h,
-            ),
+            Builder(builder: (context) {
+              return CurrencySliverAppBar(
+                expandedHeight: 76.h,
+              );
+            }),
             BlocBuilder<CurrencyBloc, CurrencyState>(
               builder: (context, state) {
                 print('Currencies Screen BUILD');

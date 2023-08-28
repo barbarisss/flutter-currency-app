@@ -2,8 +2,10 @@ import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/network/api_config.dart';
 import 'package:currency_app/app/network/dio_client.dart';
 import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
+import 'package:currency_app/data/model/currency_detail/currency_detail_model.dart';
 import 'package:currency_app/data/model/currency_info/currency_info_model.dart';
 import 'package:currency_app/data/model/currency_rate/currency_rate_model.dart';
+import 'package:intl/intl.dart';
 
 class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
   final DioClient dioClient = injector<DioClient>();
@@ -21,13 +23,13 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
 
     print(response.toString());
 
-    final dataInfo = response.data['data'] as Map<String, dynamic>;
+    final data = response.data['data'] as Map<String, dynamic>;
 
-    print(dataInfo.toString());
+    print(data.toString());
 
     final List<CurrencyInfoModel> currencyInfoList = [];
 
-    dataInfo.forEach((key, value) {
+    data.forEach((key, value) {
       currencyInfoList.add(CurrencyInfoModel.fromJson(value));
     });
 
@@ -48,13 +50,13 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
       queryParameters: queryParameters,
     );
 
-    final dataRates = response.data['data'] as Map<String, dynamic>;
+    final data = response.data['data'] as Map<String, dynamic>;
 
-    print(dataRates.toString());
+    print(data.toString());
 
     final List<CurrencyRateModel> currenciesRates = [];
 
-    dataRates.forEach((name, rate) {
+    data.forEach((name, rate) {
       var currentRate = rate;
 
       if (rate is int) {
@@ -74,9 +76,48 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
   }
 
   @override
-  Future<List<CurrencyRateModel>> getCurrenciesHistorical(
-      String base, DateTime date) async {
-    // TODO: implement getAllCurrenciesHistorical
-    throw UnimplementedError();
+  Future<List<CurrencyDetailModel>> getCurrencyTimeSeries(
+    String base,
+    String currencyCode,
+    DateTime dateFrom,
+    DateTime dateTo,
+  ) async {
+    Map<String, String> queryParameters = {
+      'apikey': ApiConfig.apiKey,
+      'base_currency': base,
+      'date_from': DateFormat('yyyy-MM-dd').format(dateFrom),
+      'date_to': DateFormat('yyyy-MM-dd').format(dateTo),
+    };
+
+    final response = await dioClient.dio.get(
+      ApiConfig.historical,
+      queryParameters: queryParameters,
+    );
+
+    print(response.toString());
+
+    final data = response.data['data'] as Map<String, dynamic>;
+
+    print(data.toString());
+
+    final List<CurrencyDetailModel> currencyTimeRates = [];
+
+    data.forEach((date, currencies) {
+      // final currenciesMap = currencies as Map<String, dynamic>;
+      final currentDate = DateFormat('yyyy-MM-dd').parse(date);
+      final currentRate = currencies[currencyCode];
+
+      currencyTimeRates.add(
+        CurrencyDetailModel(
+          date: currentDate,
+          rate: currentRate,
+        ),
+      );
+    });
+
+    print(currencyTimeRates.toString());
+    print('длина: ${currencyTimeRates.length}');
+
+    return currencyTimeRates;
   }
 }
