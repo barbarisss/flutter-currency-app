@@ -6,10 +6,8 @@ import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart'
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 class CurrencySliverAppBar extends StatefulWidget {
   const CurrencySliverAppBar({
