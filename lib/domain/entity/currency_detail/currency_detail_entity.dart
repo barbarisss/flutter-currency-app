@@ -5,6 +5,7 @@ part 'currency_detail_entity.freezed.dart';
 @freezed
 class CurrencyDetailEntity with _$CurrencyDetailEntity {
   factory CurrencyDetailEntity({
-    required Map<String, double> timeSeriesRate,
+    required DateTime date,
+    required double rate,
   }) = _CurrencyDetailEntity;
 }

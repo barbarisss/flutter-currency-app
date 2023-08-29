@@ -4,6 +4,7 @@ import 'package:currency_app/core/theme/theme.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
+import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,11 +25,14 @@ class MyApp extends StatelessWidget {
           create: (context) => injector<CurrencyBloc>(),
         ),
         BlocProvider(
-          create: (context) =>
-              injector<BaseCurrencyBloc>()..add(SelectBaseCurrencyEvent('USD')),
+          create: (context) => injector<BaseCurrencyBloc>()
+            ..add(const SelectBaseCurrencyEvent('USD')),
         ),
         BlocProvider(
           create: (context) => injector<CurrencyInfoBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => injector<CurrencyTimeSeriesBloc>(),
         ),
       ],
       child: ScreenUtilInit(

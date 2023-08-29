@@ -14,15 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CurrencyDetailModel _$CurrencyDetailModelFromJson(Map<String, dynamic> json) {
-  return _CurrencyDetailModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$CurrencyDetailModel {
-  Map<String, double> get timeSeriesRate => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
+  double get rate => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CurrencyDetailModelCopyWith<CurrencyDetailModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -34,7 +30,7 @@ abstract class $CurrencyDetailModelCopyWith<$Res> {
           CurrencyDetailModel value, $Res Function(CurrencyDetailModel) then) =
       _$CurrencyDetailModelCopyWithImpl<$Res, CurrencyDetailModel>;
   @useResult
-  $Res call({Map<String, double> timeSeriesRate});
+  $Res call({DateTime date, double rate});
 }
 
 /// @nodoc
@@ -50,13 +46,18 @@ class _$CurrencyDetailModelCopyWithImpl<$Res, $Val extends CurrencyDetailModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timeSeriesRate = null,
+    Object? date = null,
+    Object? rate = null,
   }) {
     return _then(_value.copyWith(
-      timeSeriesRate: null == timeSeriesRate
-          ? _value.timeSeriesRate
-          : timeSeriesRate // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -69,7 +70,7 @@ abstract class _$$_CurrencyDetailModelCopyWith<$Res>
       __$$_CurrencyDetailModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, double> timeSeriesRate});
+  $Res call({DateTime date, double rate});
 }
 
 /// @nodoc
@@ -83,37 +84,35 @@ class __$$_CurrencyDetailModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timeSeriesRate = null,
+    Object? date = null,
+    Object? rate = null,
   }) {
     return _then(_$_CurrencyDetailModel(
-      timeSeriesRate: null == timeSeriesRate
-          ? _value._timeSeriesRate
-          : timeSeriesRate // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_CurrencyDetailModel implements _CurrencyDetailModel {
-  _$_CurrencyDetailModel({required final Map<String, double> timeSeriesRate})
-      : _timeSeriesRate = timeSeriesRate;
+  _$_CurrencyDetailModel({required this.date, required this.rate});
 
-  factory _$_CurrencyDetailModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CurrencyDetailModelFromJson(json);
-
-  final Map<String, double> _timeSeriesRate;
   @override
-  Map<String, double> get timeSeriesRate {
-    if (_timeSeriesRate is EqualUnmodifiableMapView) return _timeSeriesRate;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_timeSeriesRate);
-  }
+  final DateTime date;
+  @override
+  final double rate;
 
   @override
   String toString() {
-    return 'CurrencyDetailModel(timeSeriesRate: $timeSeriesRate)';
+    return 'CurrencyDetailModel(date: $date, rate: $rate)';
   }
 
   @override
@@ -121,14 +120,12 @@ class _$_CurrencyDetailModel implements _CurrencyDetailModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CurrencyDetailModel &&
-            const DeepCollectionEquality()
-                .equals(other._timeSeriesRate, _timeSeriesRate));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.rate, rate) || other.rate == rate));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_timeSeriesRate));
+  int get hashCode => Object.hash(runtimeType, date, rate);
 
   @JsonKey(ignore: true)
   @override
@@ -136,25 +133,17 @@ class _$_CurrencyDetailModel implements _CurrencyDetailModel {
   _$$_CurrencyDetailModelCopyWith<_$_CurrencyDetailModel> get copyWith =>
       __$$_CurrencyDetailModelCopyWithImpl<_$_CurrencyDetailModel>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CurrencyDetailModelToJson(
-      this,
-    );
-  }
 }
 
 abstract class _CurrencyDetailModel implements CurrencyDetailModel {
   factory _CurrencyDetailModel(
-          {required final Map<String, double> timeSeriesRate}) =
-      _$_CurrencyDetailModel;
-
-  factory _CurrencyDetailModel.fromJson(Map<String, dynamic> json) =
-      _$_CurrencyDetailModel.fromJson;
+      {required final DateTime date,
+      required final double rate}) = _$_CurrencyDetailModel;
 
   @override
-  Map<String, double> get timeSeriesRate;
+  DateTime get date;
+  @override
+  double get rate;
   @override
   @JsonKey(ignore: true)
   _$$_CurrencyDetailModelCopyWith<_$_CurrencyDetailModel> get copyWith =>
