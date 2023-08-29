@@ -25,30 +25,28 @@ class CurrentRateWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              // TODO: подумать над другим вариком(!)
               '${currency.base}',
               style: TextStyle(
-                fontSize: 28.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(width: 4.w),
             Icon(
               Icons.trending_neutral_sharp,
-              size: 36.r,
+              size: 26.r,
             ),
             SizedBox(width: 4.w),
             Text(
-              // TODO: подумать над другим вариком(!)
-              '${currency.rate} ',
+              '${currency.rate!.toStringAsFixed(3)} ',
               style: TextStyle(
-                fontSize: 28.sp,
+                fontSize: 18.sp,
               ),
             ),
             Text(
               currency.name,
               style: TextStyle(
-                fontSize: 28.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
