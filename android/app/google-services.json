@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "421735891897",
+    "project_id": "flutter-currency-app",
+    "storage_bucket": "flutter-currency-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421735891897:android:42d2c42049b53ba7d66c68",
+        "android_client_info": {
+          "package_name": "com.example.currency_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421735891897-39pu1tm9i7v3jenr9ak7akprgm6t0n66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD361Ve7u2Z0AB1HyHBC2TuwlN-to0AFzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421735891897-39pu1tm9i7v3jenr9ak7akprgm6t0n66.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421735891897-rbeevghtvh9m9p1v93aioduu6v23tb04.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.currencyApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
