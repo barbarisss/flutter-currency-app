@@ -1,5 +1,6 @@
 import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
 import 'package:currency_app/presentation/screen/currency_detail/widgets/chart.dart';
@@ -49,7 +50,7 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
     late Widget chart;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details'),
+        title: const Text(AppStrings.details),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(

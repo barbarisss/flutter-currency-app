@@ -1,3 +1,4 @@
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +17,7 @@ class CurrentRateWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Current rate',
+          AppStrings.currentRate,
           style: TextStyle(
             fontSize: 20.h,
           ),
