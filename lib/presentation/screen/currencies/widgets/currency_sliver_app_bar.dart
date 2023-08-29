@@ -38,15 +38,7 @@ class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
           horizontal: AppConstants.mainPaddingWidth,
         ),
         child: const Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _BaseCurrencyWidget(),
-              _SetDateWidget(
-                text: 'Set the date',
-              )
-            ],
-          ),
+          child: _BaseCurrencyWidget(),
         ),
       ),
     );
@@ -101,89 +93,6 @@ class _BaseCurrencyWidget extends StatelessWidget {
           },
         );
       },
-    );
-  }
-}
-
-class _SetDateWidget extends StatefulWidget {
-  const _SetDateWidget({
-    super.key,
-    required this.text,
-  });
-
-  final String text;
-
-  @override
-  State<_SetDateWidget> createState() => _SetDateWidgetState();
-}
-
-class _SetDateWidgetState extends State<_SetDateWidget> {
-  DateTime? date;
-
-  @override
-  Widget build(BuildContext context) {
-    return date == null
-        ? buildInitialText(
-            widget.text,
-            () async {
-              final newDate = await DatePicker.showSimpleDatePicker(
-                context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(1962),
-                lastDate: DateTime.now(),
-                dateFormat: "dd-MMMM-yyyy",
-                locale: DateTimePickerLocale.en_us,
-                titleText: 'Choose date',
-                looping: true,
-              );
-              setState(() {
-                date = newDate;
-              });
-            },
-          )
-        : buildDate(
-            date,
-            () {
-              setState(() {
-                date = null;
-              });
-            },
-          );
-  }
-
-  Widget buildInitialText(String text, GestureTapCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: AppColors.grey,
-          fontSize: 16.sp,
-        ),
-      ),
-    );
-  }
-
-  Widget buildDate(DateTime? date, GestureTapCallback onTap) {
-    String textDate = DateFormat('dd.MM.yyyy').format(date!);
-
-    return Row(
-      children: [
-        Text(
-          textDate,
-          style: TextStyle(
-            color: AppColors.black,
-            fontSize: 16.sp,
-          ),
-        ),
-        SizedBox(width: 6.w),
-        GestureDetector(
-          onTap: onTap,
-          child: const Icon(
-            Icons.highlight_off,
-          ),
-        ),
-      ],
     );
   }
 }
