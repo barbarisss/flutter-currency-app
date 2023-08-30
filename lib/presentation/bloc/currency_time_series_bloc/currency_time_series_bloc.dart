@@ -1,5 +1,5 @@
 import 'package:currency_app/domain/entity/currency_detail/currency_detail_entity.dart';
-import 'package:currency_app/domain/use_case/get_currency_time_rates_use_case.dart';
+import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
