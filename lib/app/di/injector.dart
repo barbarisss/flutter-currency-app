@@ -3,9 +3,9 @@ import 'package:currency_app/data/data_source/remote/base_currency_remote_data_s
 import 'package:currency_app/data/data_source/remote/currency_remote_data_source.dart';
 import 'package:currency_app/data/repository/currency_repository_impl.dart';
 import 'package:currency_app/domain/repository/currency_repository.dart';
-import 'package:currency_app/domain/use_case/get_currency_time_rates_use_case.dart';
-import 'package:currency_app/domain/use_case/get_currencies_info_use_case.dart';
-import 'package:currency_app/domain/use_case/get_currencies_rates_use_case.dart';
+import 'package:currency_app/domain/use_case/currancy/get_currencies_info_use_case.dart';
+import 'package:currency_app/domain/use_case/currancy/get_currencies_rates_use_case.dart';
+import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';

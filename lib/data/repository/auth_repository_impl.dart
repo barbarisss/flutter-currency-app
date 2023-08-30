@@ -25,6 +25,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<String?> checkAuth() async {
-    return await _authDataSource.getProfileUserEmail();
+    return await _authDataSource.getUserEmail();
   }
 }

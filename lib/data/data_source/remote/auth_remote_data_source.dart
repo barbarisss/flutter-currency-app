@@ -27,7 +27,7 @@ class AuthRemoteDataSource {
     return firebaseUser!.uid;
   }
 
-  Future<String?> getProfileUserEmail() async {
+  Future<String?> getUserEmail() async {
     User? firebaseUser = _firebaseAuth.currentUser;
     if (firebaseUser != null) {
       return firebaseUser.email;
