@@ -78,6 +78,17 @@ class _BaseCurrencyWidget extends StatelessWidget {
                         Icons.arrow_drop_down_rounded,
                         size: 36.r,
                       ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {
+                              context.goNamed(AppRouter.login);
+                            },
+                            child: const Text('Log in'),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );

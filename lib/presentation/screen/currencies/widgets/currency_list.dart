@@ -9,11 +9,9 @@ import 'package:go_router/go_router.dart';
 class CurrencyListWidget extends StatelessWidget {
   const CurrencyListWidget({
     super.key,
-    required this.onTap,
     required this.currencies,
   });
 
-  final GestureTapCallback onTap;
   final List<CurrencyEntity> currencies;
 
   @override

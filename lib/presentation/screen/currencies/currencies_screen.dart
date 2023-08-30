@@ -51,7 +51,6 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                   },
                   loaded: (currencies) {
                     bodyWidget = CurrencyListWidget(
-                      onTap: () {},
                       currencies: currencies,
                     );
                   },
