@@ -1,24 +1,22 @@
-import 'package:currency_app/app/route/app_router.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
-import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordAgainController = TextEditingController();
 
   @override
   void dispose() {
@@ -26,18 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     emailController.dispose();
     passwordController.dispose();
-  }
-
-  clearControllers() {
-    emailController.clear();
-    passwordController.clear();
+    passwordAgainController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.login),
+        title: const Text('Registration'),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -62,6 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomTextField(
                     controller: passwordController,
                     helperText: 'Password',
+                    isPassword: true,
+                  ),
+                  SizedBox(height: AppConstants.mainPaddingHeight),
+                  CustomTextField(
+                    controller: passwordAgainController,
+                    helperText: 'Password again',
                     isPassword: true,
                   ),
                 ],
@@ -97,29 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                child: const Text('Sign in'),
+                child: const Text('Sign up'),
               ),
             ),
-            SizedBox(height: AppConstants.mainPaddingHeight),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Don\'t have an account? '),
-                GestureDetector(
-                  onTap: () {
-                    context.goNamed(AppRouter.registration);
-                    clearControllers();
-                  },
-                  child: const Text(
-                    'Registration',
-                    style: TextStyle(
-                      color: Color.fromRGBO(95, 139, 234, 1),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            )
           ],
         ),
       ),
