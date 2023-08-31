@@ -14,7 +14,7 @@ abstract class AuthRepository {
   /// Get authorized user id
   ///
   /// Return User id if exist or null
-  Future<String?> checkAuth();
+  Future<String?> getUserEmail();
 
   /// Sign out from current user account
   Future<void> signOut();
