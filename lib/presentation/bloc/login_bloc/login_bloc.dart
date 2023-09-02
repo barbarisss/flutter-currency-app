@@ -7,11 +7,18 @@ part 'login_state.dart';
 part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this.signInUseCase) : super(const LoginState.initial()) {
-    on<LoginEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  LoginBloc(this._signInUseCase) : super(const LoginState.initial()) {
+    on<SignInEvent>(_onSignInEvent);
   }
 
-  final SignInUseCase signInUseCase;
+  final SignInUseCase _signInUseCase;
+
+  _onSignInEvent(SignInEvent event, Emitter<LoginState> emit) async {
+    print('onSignInEvent start');
+    emit(const LoginState.loading());
+    final response = await _signInUseCase(event.email, event.password);
+    print(response);
+    emit(const LoginState.success());
+    print('onSignInEvent end');
+  }
 }

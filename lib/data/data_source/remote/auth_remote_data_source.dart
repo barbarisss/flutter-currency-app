@@ -8,9 +8,13 @@ class AuthRemoteDataSource {
             email: email, password: password))
         .user;
 
+    print(firebaseUser);
+
     if (firebaseUser == null) {
       print('firebaseUser is null');
     }
+
+    print(firebaseUser!.uid);
 
     return firebaseUser!.uid;
   }
