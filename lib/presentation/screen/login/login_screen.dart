@@ -48,7 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
           if (state is SuccessLoginState) {
             print('SuccessLoginState yes yes yes');
             // context.goNamed('root');
-            // AutoRouter.of(context).pop();
+            AutoRouter.of(context).pushAndPopUntil(
+              const CurrenciesRoute(),
+              predicate: (route) => false,
+            );
           }
         },
         builder: (context, state) {

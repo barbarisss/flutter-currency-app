@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = AppRouterAuto();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: theme(),
             // routerConfig: AppRouter.router,
-            routerConfig: AppRouterAuto().config(),
+            routerConfig: router.config(),
           );
         },
         designSize: const Size(375, 753),
