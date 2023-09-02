@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
@@ -5,6 +6,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 

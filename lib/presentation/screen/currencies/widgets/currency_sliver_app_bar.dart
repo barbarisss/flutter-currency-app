@@ -1,4 +1,5 @@
-import 'package:currency_app/app/route/app_router.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:currency_app/app/route/app_router_auto.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
@@ -7,7 +8,6 @@ import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class CurrencySliverAppBar extends StatefulWidget {
   const CurrencySliverAppBar({
@@ -59,8 +59,13 @@ class _BaseCurrencyWidget extends StatelessWidget {
 
                 return GestureDetector(
                   onTap: () {
-                    context.goNamed(AppRouter.selectBaseCurrency,
-                        extra: currentBase);
+                    // context.goNamed(AppRouter.selectBaseCurrency,
+                    //     extra: currentBase);
+
+                    AutoRouter.of(context).push(
+                      SelectBaseCurrencyRoute(currentBase: currentBase),
+                    );
+
                     BlocProvider.of<CurrencyInfoBloc>(context)
                         .add(const GetCurrenciesInfoEvent());
                   },
@@ -83,7 +88,10 @@ class _BaseCurrencyWidget extends StatelessWidget {
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {
-                              context.goNamed(AppRouter.login);
+                              // context.goNamed(AppRouter.login);
+                              AutoRouter.of(context).push(
+                                const LoginRoute(),
+                              );
                             },
                             child: const Text('Log in'),
                           ),

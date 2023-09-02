@@ -1,5 +1,5 @@
 import 'package:currency_app/app/di/injector.dart';
-import 'package:currency_app/app/route/app_router.dart';
+import 'package:currency_app/app/route/app_router_auto.dart';
 import 'package:currency_app/core/theme/theme.dart';
 import 'package:currency_app/firebase_options.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
@@ -50,8 +50,10 @@ class MyApp extends StatelessWidget {
         builder: (context, widget) {
           return MaterialApp.router(
             title: 'Currency App',
+            debugShowCheckedModeBanner: false,
             theme: theme(),
-            routerConfig: AppRouter.router,
+            // routerConfig: AppRouter.router,
+            routerConfig: AppRouterAuto().config(),
           );
         },
         designSize: const Size(375, 753),

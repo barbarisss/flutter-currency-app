@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/di/injector.dart';
-import 'package:currency_app/app/route/app_router.dart';
+import 'package:currency_app/app/route/app_router_auto.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/utils/strings.dart';
@@ -9,8 +10,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
+@RoutePage()
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -46,7 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
           }
           if (state is SuccessLoginState) {
             print('SuccessLoginState yes yes yes');
-            context.goNamed('root');
+            // context.goNamed('root');
+            // AutoRouter.of(context).pop();
           }
         },
         builder: (context, state) {
@@ -133,7 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Text('Don\'t have an account? '),
                       GestureDetector(
                         onTap: () {
-                          context.goNamed(AppRouter.registration);
+                          // context.goNamed(AppRouter.registration);
+                          AutoRouter.of(context).push(
+                            const RegistrationRoute(),
+                          );
                           clearControllers();
                         },
                         child: const Text(

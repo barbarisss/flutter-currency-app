@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
@@ -5,7 +6,6 @@ import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class BaseCurrenciesWidget extends StatelessWidget {
   const BaseCurrenciesWidget({
@@ -38,7 +38,8 @@ class BaseCurrenciesWidget extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<BaseCurrencyBloc>(context)
                       .add(SelectBaseCurrencyEvent(currencies[index].code));
-                  context.pop();
+                  // context.pop();
+                  AutoRouter.of(context).pop();
                 },
                 child: Row(
                   children: [

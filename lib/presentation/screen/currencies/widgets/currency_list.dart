@@ -1,10 +1,10 @@
-import 'package:currency_app/app/route/app_router.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:currency_app/app/route/app_router_auto.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class CurrencyListWidget extends StatelessWidget {
   const CurrencyListWidget({
@@ -30,7 +30,11 @@ class CurrencyListWidget extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              context.goNamed(AppRouter.details, extra: currencies[index]);
+              // context.goNamed(AppRouter.details, extra: currencies[index]);
+
+              AutoRouter.of(context).push(
+                CurrencyDetailRoute(currency: currencies[index]),
+              );
             },
             child: Row(
               children: [

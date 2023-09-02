@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_list.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class CurrenciesScreen extends StatefulWidget {
   const CurrenciesScreen({super.key});
 
