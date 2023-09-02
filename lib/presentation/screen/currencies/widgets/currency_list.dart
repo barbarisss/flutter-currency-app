@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/route/app_router_auto.gr.dart';
+import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
+import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CurrencyListWidget extends StatelessWidget {
@@ -28,58 +31,29 @@ class CurrencyListWidget extends StatelessWidget {
             horizontal: AppConstants.mainPaddingWidth,
             vertical: AppConstants.mainPaddingHeight / 2,
           ),
-          child: GestureDetector(
-            onTap: () {
-              // context.goNamed(AppRouter.details, extra: currencies[index]);
+          child: BlocBuilder<UserBloc, UserState>(
+            builder: (context, state) {
+              return _CurrencyCardWidget(
+                name: name,
+                symbol: symbol,
+                rate: rate,
+                onTap: () {
+                  // context.goNamed(AppRouter.details, extra: currencies[index]);
 
-              AutoRouter.of(context).push(
-                CurrencyDetailRoute(currency: currencies[index]),
+                  if (state is UnauthorizedUserState) {
+                    SnackBarService.showSnackBar(
+                      context,
+                      'Log in to see the details of the currency',
+                      false,
+                    );
+                  } else {
+                    AutoRouter.of(context).push(
+                      CurrencyDetailRoute(currency: currencies[index]),
+                    );
+                  }
+                },
               );
             },
-            child: Row(
-              children: [
-                Expanded(
-                  child: RichText(
-                    text: TextSpan(
-                      text: '$name ',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: AppColors.black,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: '(',
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          ),
-                        ),
-                        TextSpan(
-                          text: symbol,
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ')',
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Text(
-                  rate,
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                  ),
-                ),
-                SizedBox(width: AppConstants.mainPaddingWidth),
-                const Icon(Icons.navigate_next_rounded),
-              ],
-            ),
           ),
         );
       },
@@ -89,6 +63,72 @@ class CurrencyListWidget extends StatelessWidget {
           height: 1.h,
         );
       },
+    );
+  }
+}
+
+class _CurrencyCardWidget extends StatelessWidget {
+  const _CurrencyCardWidget({
+    super.key,
+    required this.name,
+    required this.symbol,
+    required this.rate,
+    required this.onTap,
+  });
+
+  final String name;
+  final String symbol;
+  final String rate;
+  final GestureTapCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                text: '$name ',
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: AppColors.black,
+                ),
+                children: [
+                  TextSpan(
+                    text: '(',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                  TextSpan(
+                    text: symbol,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ')',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Text(
+            rate,
+            style: TextStyle(
+              fontSize: 18.sp,
+            ),
+          ),
+          SizedBox(width: AppConstants.mainPaddingWidth),
+          const Icon(Icons.navigate_next_rounded),
+        ],
+      ),
     );
   }
 }

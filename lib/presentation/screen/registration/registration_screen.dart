@@ -6,7 +6,6 @@ import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/validators/app_validators.dart';
 import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
