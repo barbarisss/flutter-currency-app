@@ -5,6 +5,7 @@ import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
+import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,6 +49,8 @@ class _BaseCurrencyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late Widget userWidget;
+
     return BlocBuilder<CurrencyBloc, CurrencyState>(
       builder: (context, state) {
         return BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
@@ -86,14 +89,45 @@ class _BaseCurrencyWidget extends StatelessWidget {
                       Expanded(
                         child: Align(
                           alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: () {
-                              // context.goNamed(AppRouter.login);
-                              AutoRouter.of(context).push(
-                                const LoginRoute(),
+                          child: BlocBuilder<UserBloc, UserState>(
+                            builder: (context, state) {
+                              state.maybeWhen(
+                                authorized: (email) {
+                                  userWidget = Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(email),
+                                      SizedBox(
+                                          width: AppConstants.mainPaddingWidth /
+                                              4),
+                                      IconButton(
+                                        onPressed: () {
+                                          context.read<UserBloc>().add(
+                                                const SignOutEvent(),
+                                              );
+                                        },
+                                        icon: const Icon(Icons.logout_outlined),
+                                      ),
+                                    ],
+                                  );
+                                },
+                                unauthorized: () {
+                                  userWidget = TextButton(
+                                    onPressed: () {
+                                      // context.goNamed(AppRouter.login);
+                                      AutoRouter.of(context).push(
+                                        const LoginRoute(),
+                                      );
+                                    },
+                                    child: const Text('Log in'),
+                                  );
+                                },
+                                orElse: () {
+                                  userWidget = const SizedBox();
+                                },
                               );
+                              return userWidget;
                             },
-                            child: const Text('Log in'),
                           ),
                         ),
                       ),

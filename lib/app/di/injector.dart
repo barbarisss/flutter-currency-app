@@ -2,10 +2,13 @@ import 'package:currency_app/app/network/dio_client.dart';
 import 'package:currency_app/data/data_source/remote/auth_remote_data_source.dart';
 import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
 import 'package:currency_app/data/data_source/remote/currency_remote_data_source.dart';
+import 'package:currency_app/data/repository/auth_repository_impl.dart';
 import 'package:currency_app/data/repository/currency_repository_impl.dart';
 import 'package:currency_app/domain/repository/auth_repository.dart';
 import 'package:currency_app/domain/repository/currency_repository.dart';
+import 'package:currency_app/domain/use_case/auth/get_email_use_case.dart';
 import 'package:currency_app/domain/use_case/auth/sign_in_use_case.dart';
+import 'package:currency_app/domain/use_case/auth/sign_out_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currencies_info_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currencies_rates_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
@@ -15,10 +18,9 @@ import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_
 import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
 import 'package:currency_app/presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
+import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../data/repository/auth_repository_impl.dart';
 
 final injector = GetIt.instance;
 
@@ -54,6 +56,12 @@ Future<void> initDependencies() async {
     () => GetCurrencyTimeSeriesUseCase(currencyRepository: injector()),
   );
   injector.registerLazySingleton(
+    () => GetEmailUseCase(injector<AuthRepository>()),
+  );
+  injector.registerLazySingleton(
+    () => SignOutUseCase(injector<AuthRepository>()),
+  );
+  injector.registerLazySingleton(
     () => SignInUseCase(injector<AuthRepository>()),
   );
 
@@ -75,6 +83,12 @@ Future<void> initDependencies() async {
   injector.registerFactory(
     () => CurrencyTimeSeriesBloc(
       getCurrencyTimeSeriesUseCase: injector(),
+    ),
+  );
+  injector.registerFactory(
+    () => UserBloc(
+      injector<GetEmailUseCase>(),
+      injector<SignOutUseCase>(),
     ),
   );
   injector.registerFactory(

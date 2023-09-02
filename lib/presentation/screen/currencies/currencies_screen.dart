@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_list.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -27,41 +29,44 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
   Widget build(BuildContext context) {
     late Widget bodyWidget;
 
-    return Scaffold(
-      backgroundColor: AppColors.backgroundWhite,
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            Builder(builder: (context) {
-              return CurrencySliverAppBar(
-                expandedHeight: 76.h,
-              );
-            }),
-            BlocBuilder<CurrencyBloc, CurrencyState>(
-              builder: (context, state) {
-                print('Currencies Screen BUILD');
-                state.when(
-                  initial: () {
-                    bodyWidget = const SliverToBoxAdapter();
-                  },
-                  loading: () {
-                    bodyWidget = const SliverToBoxAdapter(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  },
-                  loaded: (currencies) {
-                    bodyWidget = CurrencyListWidget(
-                      currencies: currencies,
-                    );
-                  },
+    return BlocProvider(
+      create: (context) => injector<UserBloc>()..add(const CheckAuthEvent()),
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundWhite,
+        body: SafeArea(
+          child: CustomScrollView(
+            slivers: [
+              Builder(builder: (context) {
+                return CurrencySliverAppBar(
+                  expandedHeight: 76.h,
                 );
+              }),
+              BlocBuilder<CurrencyBloc, CurrencyState>(
+                builder: (context, state) {
+                  print('Currencies Screen BUILD');
+                  state.when(
+                    initial: () {
+                      bodyWidget = const SliverToBoxAdapter();
+                    },
+                    loading: () {
+                      bodyWidget = const SliverToBoxAdapter(
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    },
+                    loaded: (currencies) {
+                      bodyWidget = CurrencyListWidget(
+                        currencies: currencies,
+                      );
+                    },
+                  );
 
-                return bodyWidget;
-              },
-            ),
-          ],
+                  return bodyWidget;
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
