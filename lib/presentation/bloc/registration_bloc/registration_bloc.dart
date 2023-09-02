@@ -7,12 +7,19 @@ part 'registration_state.dart';
 part 'registration_bloc.freezed.dart';
 
 class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
-  RegistrationBloc(this.signUpUseCase)
+  RegistrationBloc(this._signUpUseCase)
       : super(const RegistrationState.initial()) {
-    on<RegistrationEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<SignUpEvent>(_OnSignUpEvent);
   }
 
-  final SignUpUseCase signUpUseCase;
+  final SignUpUseCase _signUpUseCase;
+
+  _OnSignUpEvent(SignUpEvent event, Emitter<RegistrationState> emit) async {
+    print('onSignInEvent start');
+    emit(const RegistrationState.loading());
+    final response = await _signUpUseCase(event.email, event.password);
+    print(response);
+    emit(const RegistrationState.success());
+    print('onSignInEvent end');
+  }
 }

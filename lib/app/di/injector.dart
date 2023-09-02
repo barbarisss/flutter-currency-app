@@ -9,6 +9,7 @@ import 'package:currency_app/domain/repository/currency_repository.dart';
 import 'package:currency_app/domain/use_case/auth/get_email_use_case.dart';
 import 'package:currency_app/domain/use_case/auth/sign_in_use_case.dart';
 import 'package:currency_app/domain/use_case/auth/sign_out_use_case.dart';
+import 'package:currency_app/domain/use_case/auth/sign_up_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currencies_info_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currencies_rates_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
@@ -64,6 +65,9 @@ Future<void> initDependencies() async {
   injector.registerLazySingleton(
     () => SignInUseCase(injector<AuthRepository>()),
   );
+  injector.registerLazySingleton(
+    () => SignUpUseCase(injector<AuthRepository>()),
+  );
 
   // BLoC
   injector.registerFactory(
@@ -98,7 +102,7 @@ Future<void> initDependencies() async {
   );
   injector.registerFactory(
     () => RegistrationBloc(
-      injector(),
+      injector<SignUpUseCase>(),
     ),
   );
 }

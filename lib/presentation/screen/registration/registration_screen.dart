@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:currency_app/app/di/injector.dart';
+import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/core/validators/app_validators.dart';
+import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -18,7 +23,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController passwordAgainController = TextEditingController();
+  final TextEditingController repeatPasswordController =
+      TextEditingController();
 
   @override
   void dispose() {
@@ -26,83 +32,134 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     emailController.dispose();
     passwordController.dispose();
-    passwordAgainController.dispose();
+    repeatPasswordController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registration'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppConstants.mainPaddingWidth,
+    late Widget bodyWidget;
+    return BlocProvider(
+      create: (context) => injector<RegistrationBloc>(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Registration'),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  CustomTextField(
-                    controller: emailController,
-                    helperText: 'Email',
-                    onValidate: (email) =>
-                        email != null && !EmailValidator.validate(email)
-                            ? 'Input correct email'
-                            : null,
-                  ),
-                  SizedBox(height: AppConstants.mainPaddingHeight),
-                  CustomTextField(
-                    controller: passwordController,
-                    helperText: 'Password',
-                    isPassword: true,
-                  ),
-                  SizedBox(height: AppConstants.mainPaddingHeight),
-                  CustomTextField(
-                    controller: passwordAgainController,
-                    helperText: 'Password again',
-                    isPassword: true,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: AppConstants.mainPaddingHeight),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    print('validate');
-                  }
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstants.mainPaddingWidth,
+          ),
+          child: BlocConsumer<RegistrationBloc, RegistrationState>(
+            listener: (context, state) {
+              if (state is LoadingRegistrationState) {
+                print('SuccessRegistrationState phh phh phh');
+              }
+              if (state is SuccessRegistrationState) {
+                print('SuccessRegistrationState yes yes yes');
+                // context.goNamed('root');
+                AutoRouter.of(context).pop();
+                SnackBarService.showSnackBar(
+                  context,
+                  'Registration is successful',
+                  false,
+                );
+              }
+            },
+            builder: (context, state) {
+              state.maybeWhen(
+                loading: () {
+                  bodyWidget = const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 },
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-                    vertical: AppConstants.mainPaddingHeight,
-                  )),
-                  textStyle: MaterialStateProperty.all(
-                    const TextStyle(
-                      fontSize: 16,
-                      color: AppColors.white,
-                    ),
-                  ),
-                  backgroundColor: MaterialStateProperty.all(
-                    const Color.fromRGBO(54, 110, 230, 1),
-                  ),
-                  foregroundColor: MaterialStateProperty.all(AppColors.white),
-                  elevation: MaterialStateProperty.all(0),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                  ),
-                ),
-                child: const Text('Sign up'),
-              ),
-            ),
-          ],
+                orElse: () {
+                  bodyWidget = Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Form(
+                        key: formKey,
+                        child: Column(
+                          children: [
+                            CustomTextField(
+                              controller: emailController,
+                              helperText: 'Email',
+                              onValidate: AppValidators.email,
+                            ),
+                            SizedBox(height: AppConstants.mainPaddingHeight),
+                            CustomTextField(
+                              controller: passwordController,
+                              helperText: 'Password',
+                              isPassword: true,
+                              onValidate: AppValidators.password,
+                            ),
+                            SizedBox(height: AppConstants.mainPaddingHeight),
+                            CustomTextField(
+                              controller: repeatPasswordController,
+                              helperText: 'Repeat password',
+                              isPassword: true,
+                              onValidate: AppValidators.password,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: AppConstants.mainPaddingHeight),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              if (passwordController.text !=
+                                  repeatPasswordController.text) {
+                                SnackBarService.showSnackBar(
+                                  context,
+                                  'The passwords must match',
+                                  true,
+                                );
+                                return;
+                              }
+
+                              String email = emailController.text.trim();
+                              String password = passwordController.text.trim();
+
+                              context.read<RegistrationBloc>().add(SignUpEvent(
+                                    email: email,
+                                    password: password,
+                                  ));
+                            }
+                          },
+                          style: ButtonStyle(
+                            padding:
+                                MaterialStateProperty.all(EdgeInsets.symmetric(
+                              vertical: AppConstants.mainPaddingHeight,
+                            )),
+                            textStyle: MaterialStateProperty.all(
+                              const TextStyle(
+                                fontSize: 16,
+                                color: AppColors.white,
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color.fromRGBO(54, 110, 230, 1),
+                            ),
+                            foregroundColor:
+                                MaterialStateProperty.all(AppColors.white),
+                            elevation: MaterialStateProperty.all(0),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.r),
+                              ),
+                            ),
+                          ),
+                          child: const Text('Sign up'),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+              return bodyWidget;
+            },
+          ),
         ),
       ),
     );
