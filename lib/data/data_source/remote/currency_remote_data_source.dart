@@ -2,17 +2,15 @@ import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/network/api_config.dart';
 import 'package:currency_app/app/network/dio_client.dart';
 import 'package:currency_app/core/error/exceptions.dart';
-import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
 import 'package:currency_app/data/model/currency_detail/currency_detail_model.dart';
 import 'package:currency_app/data/model/currency_info/currency_info_model.dart';
 import 'package:currency_app/data/model/currency_rate/currency_rate_model.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
-class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
+class CurrencyRemoteDataSource {
   final DioClient dioClient = injector<DioClient>();
 
-  @override
   Future<List<CurrencyInfoModel>> getCurrenciesInfo() async {
     try {
       Map<String, String> queryParameters = {
@@ -42,7 +40,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
     }
   }
 
-  @override
   Future<List<CurrencyRateModel>> getCurrenciesLatest(String base) async {
     try {
       Map<String, String> queryParameters = {
@@ -85,7 +82,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
     }
   }
 
-  @override
   Future<List<CurrencyDetailModel>> getCurrencyTimeSeries(
     String base,
     String currencyCode,

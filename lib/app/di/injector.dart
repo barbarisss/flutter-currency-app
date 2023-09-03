@@ -1,6 +1,5 @@
 import 'package:currency_app/app/network/dio_client.dart';
 import 'package:currency_app/data/data_source/remote/auth_remote_data_source.dart';
-import 'package:currency_app/data/data_source/remote/base_currency_remote_data_source.dart';
 import 'package:currency_app/data/data_source/remote/currency_remote_data_source.dart';
 import 'package:currency_app/data/repository/auth_repository_impl.dart';
 import 'package:currency_app/data/repository/currency_repository_impl.dart';
@@ -31,7 +30,7 @@ Future<void> initDependencies() async {
   injector.registerLazySingleton<Dio>(() => Dio());
 
   // Data Source
-  injector.registerLazySingleton<BaseCurrencyRemoteDataSource>(
+  injector.registerLazySingleton(
     () => CurrencyRemoteDataSource(),
   );
   injector.registerLazySingleton(
