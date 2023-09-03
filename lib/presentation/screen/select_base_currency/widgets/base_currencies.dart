@@ -38,7 +38,6 @@ class BaseCurrenciesWidget extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<BaseCurrencyBloc>(context)
                       .add(SelectBaseCurrencyEvent(currencies[index]));
-                  // context.pop();
                   AutoRouter.of(context).pop();
                 },
                 child: Row(

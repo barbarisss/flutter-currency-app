@@ -56,7 +56,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               }
               if (state is SuccessRegistrationState) {
                 print('SuccessRegistrationState yes yes yes');
-                // context.goNamed('root');
                 AutoRouter.of(context).pop();
                 SnackBarService.showSnackBar(
                   context,

@@ -1,11 +1,8 @@
 import 'package:currency_app/app/di/injector.dart';
-import 'package:currency_app/app/route/app_router_auto.dart';
+import 'package:currency_app/app/route/app_router.dart';
 import 'package:currency_app/core/theme/theme.dart';
 import 'package:currency_app/firebase_options.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,7 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = AppRouterAuto();
+    final router = AppRouter();
     return BlocProvider(
       create: (context) => injector<BaseCurrencyBloc>(),
       child: ScreenUtilInit(
@@ -39,7 +36,6 @@ class MyApp extends StatelessWidget {
             title: 'Currency App',
             debugShowCheckedModeBanner: false,
             theme: theme(),
-            // routerConfig: AppRouter.router,
             routerConfig: router.config(),
           );
         },

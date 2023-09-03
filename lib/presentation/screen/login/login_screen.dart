@@ -59,7 +59,6 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               if (state is SuccessLoginState) {
                 print('SuccessLoginState yes yes yes');
-                // context.goNamed('root');
                 AutoRouter.of(context).pushAndPopUntil(
                   const CurrenciesRoute(),
                   predicate: (route) => false,
@@ -153,7 +152,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text('Don\'t have an account? '),
                         GestureDetector(
                           onTap: () {
-                            // context.goNamed(AppRouter.registration);
                             AutoRouter.of(context).push(
                               const RegistrationRoute(),
                             );

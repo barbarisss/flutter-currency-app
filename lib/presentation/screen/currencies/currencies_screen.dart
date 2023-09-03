@@ -13,20 +13,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
-class CurrenciesScreen extends StatefulWidget {
+class CurrenciesScreen extends StatelessWidget {
   const CurrenciesScreen({super.key});
-
-  @override
-  State<CurrenciesScreen> createState() => _CurrenciesScreenState();
-}
-
-class _CurrenciesScreenState extends State<CurrenciesScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    print('THIS IS INIT STATE!!!!');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +40,6 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
               ),
               BlocBuilder<CurrencyBloc, CurrencyState>(
                 builder: (context, state) {
-                  print('Currencies Screen BUILD');
                   state.when(
                     initial: () {
                       bodyWidget = SliverFillRemaining(

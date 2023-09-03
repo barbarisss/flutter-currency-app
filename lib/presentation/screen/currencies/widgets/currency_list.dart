@@ -38,8 +38,6 @@ class CurrencyListWidget extends StatelessWidget {
                 symbol: symbol,
                 rate: rate,
                 onTap: () {
-                  // context.goNamed(AppRouter.details, extra: currencies[index]);
-
                   if (state is UnauthorizedUserState) {
                     SnackBarService.showSnackBar(
                       context,

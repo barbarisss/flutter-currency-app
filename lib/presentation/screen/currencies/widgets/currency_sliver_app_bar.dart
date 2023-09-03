@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/route/app_router_auto.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
@@ -57,42 +56,17 @@ class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
   }
 }
 
-class _BaseCurrencyWidget extends StatefulWidget {
+class _BaseCurrencyWidget extends StatelessWidget {
   const _BaseCurrencyWidget({super.key});
 
-  @override
-  State<_BaseCurrencyWidget> createState() => _BaseCurrencyWidgetState();
-}
-
-class _BaseCurrencyWidgetState extends State<_BaseCurrencyWidget> {
-  @override
-  void initState() {
-    super.initState();
-    _baseCurrencyBloc.state.maybeWhen(
-      afterSelect: (currency) {
-        // _currencyBloc.add(GetAllCurrencyEvent(currency.code));
-        print('after select  _baseCurrencyBloc');
-      },
-      orElse: () {
-        print('orElseee');
-      },
-    );
-  }
-
-  final _currencyBloc = injector<CurrencyBloc>();
-  final _baseCurrencyBloc = injector<BaseCurrencyBloc>();
   @override
   Widget build(BuildContext context) {
     late Widget bodyWidget;
 
     return BlocBuilder<CurrencyBloc, CurrencyState>(
-      bloc: _currencyBloc,
       builder: (context, state) {
         return BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
-          bloc: _baseCurrencyBloc,
           builder: (context, state) {
-            // final currentBase = state.base;
-
             state.when(
               initial: () {
                 bodyWidget = ElevatedButton(
@@ -130,9 +104,6 @@ class _BaseCurrencyWidgetState extends State<_BaseCurrencyWidget> {
               afterSelect: (currency) {
                 bodyWidget = GestureDetector(
                   onTap: () {
-                    // context.goNamed(AppRouter.selectBaseCurrency,
-                    //     extra: currentBase);
-
                     AutoRouter.of(context).push(
                       SelectBaseCurrencyRoute(currentBase: currency.code),
                     );
@@ -213,7 +184,6 @@ class AuthInfoWidget extends StatelessWidget {
           unauthorized: () {
             authInfo = TextButton(
               onPressed: () {
-                // context.goNamed(AppRouter.login);
                 AutoRouter.of(context).push(
                   const LoginRoute(),
                 );

@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'app_router_auto.gr.dart';
+import 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen,Route')
-class AppRouterAuto extends $AppRouterAuto {
+class AppRouter extends $AppRouter {
   @override
   RouteType get defaultRouteType => const RouteType.material();
 
