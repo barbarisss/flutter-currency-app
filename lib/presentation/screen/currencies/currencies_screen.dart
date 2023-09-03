@@ -5,6 +5,7 @@ import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart'
 import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_list.dart';
 import 'package:currency_app/presentation/screen/currencies/widgets/currency_sliver_app_bar.dart';
+import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,7 +52,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                     loading: () {
                       bodyWidget = const SliverToBoxAdapter(
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: CustomProgressIndicator(),
                         ),
                       );
                     },

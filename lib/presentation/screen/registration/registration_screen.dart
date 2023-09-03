@@ -5,6 +5,7 @@ import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/validators/app_validators.dart';
 import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
+import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +38,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     late Widget bodyWidget;
+
     return BlocProvider(
       create: (context) => injector<RegistrationBloc>(),
       child: Scaffold(
@@ -67,7 +69,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               state.maybeWhen(
                 loading: () {
                   bodyWidget = const Center(
-                    child: CircularProgressIndicator(),
+                    child: CustomProgressIndicator(),
                   );
                 },
                 orElse: () {
@@ -137,7 +139,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                             ),
                             backgroundColor: MaterialStateProperty.all(
-                              const Color.fromRGBO(54, 110, 230, 1),
+                              AppColors.blue,
                             ),
                             foregroundColor:
                                 MaterialStateProperty.all(AppColors.white),

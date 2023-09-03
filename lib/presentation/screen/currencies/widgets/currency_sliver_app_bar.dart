@@ -96,7 +96,12 @@ class _BaseCurrencyWidget extends StatelessWidget {
                                   userWidget = Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text(email),
+                                      Text(
+                                        email,
+                                        style: const TextStyle(
+                                          color: AppColors.grey,
+                                        ),
+                                      ),
                                       SizedBox(
                                           width: AppConstants.mainPaddingWidth /
                                               4),
@@ -106,7 +111,10 @@ class _BaseCurrencyWidget extends StatelessWidget {
                                                 const SignOutEvent(),
                                               );
                                         },
-                                        icon: const Icon(Icons.logout_outlined),
+                                        icon: const Icon(
+                                          Icons.logout_outlined,
+                                          color: AppColors.lightBlue,
+                                        ),
                                       ),
                                     ],
                                   );
@@ -119,7 +127,12 @@ class _BaseCurrencyWidget extends StatelessWidget {
                                         const LoginRoute(),
                                       );
                                     },
-                                    child: const Text('Log in'),
+                                    child: const Text(
+                                      'Log in',
+                                      style: TextStyle(
+                                        color: AppColors.lightBlue,
+                                      ),
+                                    ),
                                   );
                                 },
                                 orElse: () {

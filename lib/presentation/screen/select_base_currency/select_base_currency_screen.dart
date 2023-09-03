@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/screen/select_base_currency/widgets/base_currencies.dart';
+import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,7 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
             },
             loading: () {
               bodyWidget = const Center(
-                child: CircularProgressIndicator(),
+                child: CustomProgressIndicator(),
               );
             },
             loaded: (currencies) {
