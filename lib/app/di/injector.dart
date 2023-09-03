@@ -14,12 +14,12 @@ import 'package:currency_app/domain/use_case/currancy/get_currencies_info_use_ca
 import 'package:currency_app/domain/use_case/currancy/get_currencies_rates_use_case.dart';
 import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
-import 'package:currency_app/presentation/bloc/login_bloc/login_bloc.dart';
-import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
-import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
+import 'package:currency_app/presentation/currencies/currency_bloc/currency_bloc.dart';
+import 'package:currency_app/presentation/currencies/user_bloc/user_bloc.dart';
+import 'package:currency_app/presentation/currency_detail/currency_time_series_bloc/currency_time_series_bloc.dart';
+import 'package:currency_app/presentation/login/login_bloc/login_bloc.dart';
+import 'package:currency_app/presentation/registration/registration_bloc/registration_bloc.dart';
+import 'package:currency_app/presentation/select_base_currency/currency_info_bloc/currency_info_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 

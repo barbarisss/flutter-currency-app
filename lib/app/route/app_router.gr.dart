@@ -11,15 +11,14 @@
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:currency_app/domain/entity/currency/currency_entity.dart'
     as _i8;
-import 'package:currency_app/presentation/screen/currencies/currencies_screen.dart'
+import 'package:currency_app/presentation/currencies/currencies_screen.dart'
     as _i1;
-import 'package:currency_app/presentation/screen/currency_detail/currency_detail_screen.dart'
+import 'package:currency_app/presentation/currency_detail/currency_detail_screen.dart'
     as _i2;
-import 'package:currency_app/presentation/screen/login/login_screen.dart'
-    as _i3;
-import 'package:currency_app/presentation/screen/registration/registration_screen.dart'
+import 'package:currency_app/presentation/login/login_screen.dart' as _i3;
+import 'package:currency_app/presentation/registration/registration_screen.dart'
     as _i4;
-import 'package:currency_app/presentation/screen/select_base_currency/select_base_currency_screen.dart'
+import 'package:currency_app/presentation/select_base_currency/select_base_currency_screen.dart'
     as _i5;
 import 'package:flutter/material.dart' as _i7;
 

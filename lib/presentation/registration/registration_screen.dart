@@ -5,7 +5,7 @@ import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/core/validators/app_validators.dart';
-import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
+import 'package:currency_app/presentation/registration/registration_bloc/registration_bloc.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';

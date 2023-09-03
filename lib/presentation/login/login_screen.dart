@@ -5,7 +5,7 @@ import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/utils/strings.dart';
-import 'package:currency_app/presentation/bloc/login_bloc/login_bloc.dart';
+import 'package:currency_app/presentation/login/login_bloc/login_bloc.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_text_field.dart';
 import 'package:email_validator/email_validator.dart';
