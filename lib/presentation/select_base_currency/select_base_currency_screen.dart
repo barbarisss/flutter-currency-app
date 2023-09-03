@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/di/injector.dart';
+import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/presentation/select_base_currency/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/select_base_currency/widgets/base_currencies.dart';
@@ -29,7 +30,16 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text(AppStrings.selectBaseCurrency),
         ),
-        body: BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
+        body: BlocConsumer<CurrencyInfoBloc, CurrencyInfoState>(
+          listener: (context, state) {
+            if (state is ErrorCurrencyInfoState) {
+              SnackBarService.showSnackBar(
+                context,
+                state.message,
+                SnackBarType.error,
+              );
+            }
+          },
           builder: (context, state) {
             state.when(
               initial: () {
@@ -38,6 +48,11 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
               loading: () {
                 bodyWidget = const Center(
                   child: CustomProgressIndicator(),
+                );
+              },
+              error: (message) {
+                bodyWidget = const Center(
+                  child: Text(AppStrings.error),
                 );
               },
               loaded: (currencies) {

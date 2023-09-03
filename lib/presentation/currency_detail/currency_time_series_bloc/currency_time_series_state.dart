@@ -3,10 +3,12 @@ part of 'currency_time_series_bloc.dart';
 @freezed
 class CurrencyTimeSeriesState with _$CurrencyTimeSeriesState {
   const factory CurrencyTimeSeriesState.initial() =
-      _InitialCurrencyTimeSeriesState;
+      InitialCurrencyTimeSeriesState;
   const factory CurrencyTimeSeriesState.loading() =
-      _LoadingCurrencyTimeSeriesState;
+      LoadingCurrencyTimeSeriesState;
   const factory CurrencyTimeSeriesState.loaded(
     List<CurrencyDetailEntity> currencyTimeSeries,
-  ) = _LoadedCurrencyTimeSeriesState;
+  ) = LoadedCurrencyTimeSeriesState;
+  const factory CurrencyTimeSeriesState.error(String message) =
+      ErrorCurrencyTimeSeriesState;
 }

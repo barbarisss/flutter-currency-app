@@ -22,7 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     print('onSignInEvent end');
     response.fold(
       (failure) => emit(LoginState.error(failure.message)),
-      (user) => emit(const LoginState.success()),
+      (success) => emit(const LoginState.success()),
     );
   }
 }

@@ -9,7 +9,7 @@ class SignInUseCase {
 
   Future<Either<Failure, String>> call(String email, String password) async {
     try {
-      String userId = await _authRepository.signIn(email, password);
+      final userId = await _authRepository.signIn(email, password);
 
       return Right(userId);
     } catch (e) {

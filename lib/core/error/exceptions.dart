@@ -53,3 +53,19 @@ class SignUpCancelledException implements Exception {
     return message;
   }
 }
+
+class NoConnectionException implements Exception {
+  final message = "No internet connection";
+  @override
+  String toString() {
+    return message;
+  }
+}
+
+class ApiErrorException implements Exception {
+  final message = "API Error";
+  @override
+  String toString() {
+    return message;
+  }
+}

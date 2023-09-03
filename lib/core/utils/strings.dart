@@ -19,4 +19,5 @@ abstract class AppStrings {
   static const String registrationSuccess = 'Registration is successful';
   static const String inputCorrectEmail = 'Input correct email';
   static const String matchPasswords = 'The passwords must match';
+  static const String error = 'Error';
 }

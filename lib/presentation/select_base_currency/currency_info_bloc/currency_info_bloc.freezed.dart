@@ -171,6 +171,7 @@ mixin _$CurrencyInfoState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<CurrencyEntity> currencies) loaded,
+    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -178,6 +179,7 @@ mixin _$CurrencyInfoState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<CurrencyEntity> currencies)? loaded,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -185,28 +187,32 @@ mixin _$CurrencyInfoState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<CurrencyEntity> currencies)? loaded,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialCurrencyInfoState value) initial,
-    required TResult Function(_LoadingCurrencyInfoState value) loading,
-    required TResult Function(_LoadedCurrencyInfoState value) loaded,
+    required TResult Function(InitialCurrencyInfoState value) initial,
+    required TResult Function(LoadingCurrencyInfoState value) loading,
+    required TResult Function(LoadedCurrencyInfoState value) loaded,
+    required TResult Function(ErrorCurrencyInfoState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialCurrencyInfoState value)? initial,
-    TResult? Function(_LoadingCurrencyInfoState value)? loading,
-    TResult? Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(InitialCurrencyInfoState value)? initial,
+    TResult? Function(LoadingCurrencyInfoState value)? loading,
+    TResult? Function(LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(ErrorCurrencyInfoState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialCurrencyInfoState value)? initial,
-    TResult Function(_LoadingCurrencyInfoState value)? loading,
-    TResult Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult Function(InitialCurrencyInfoState value)? initial,
+    TResult Function(LoadingCurrencyInfoState value)? loading,
+    TResult Function(LoadedCurrencyInfoState value)? loaded,
+    TResult Function(ErrorCurrencyInfoState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,26 +237,25 @@ class _$CurrencyInfoStateCopyWithImpl<$Res, $Val extends CurrencyInfoState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCurrencyInfoStateCopyWith<$Res> {
-  factory _$$_InitialCurrencyInfoStateCopyWith(
-          _$_InitialCurrencyInfoState value,
-          $Res Function(_$_InitialCurrencyInfoState) then) =
-      __$$_InitialCurrencyInfoStateCopyWithImpl<$Res>;
+abstract class _$$InitialCurrencyInfoStateCopyWith<$Res> {
+  factory _$$InitialCurrencyInfoStateCopyWith(_$InitialCurrencyInfoState value,
+          $Res Function(_$InitialCurrencyInfoState) then) =
+      __$$InitialCurrencyInfoStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCurrencyInfoStateCopyWithImpl<$Res>
-    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$_InitialCurrencyInfoState>
-    implements _$$_InitialCurrencyInfoStateCopyWith<$Res> {
-  __$$_InitialCurrencyInfoStateCopyWithImpl(_$_InitialCurrencyInfoState _value,
-      $Res Function(_$_InitialCurrencyInfoState) _then)
+class __$$InitialCurrencyInfoStateCopyWithImpl<$Res>
+    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$InitialCurrencyInfoState>
+    implements _$$InitialCurrencyInfoStateCopyWith<$Res> {
+  __$$InitialCurrencyInfoStateCopyWithImpl(_$InitialCurrencyInfoState _value,
+      $Res Function(_$InitialCurrencyInfoState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
-  const _$_InitialCurrencyInfoState();
+class _$InitialCurrencyInfoState implements InitialCurrencyInfoState {
+  const _$InitialCurrencyInfoState();
 
   @override
   String toString() {
@@ -261,7 +266,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitialCurrencyInfoState);
+            other is _$InitialCurrencyInfoState);
   }
 
   @override
@@ -273,6 +278,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<CurrencyEntity> currencies) loaded,
+    required TResult Function(String message) error,
   }) {
     return initial();
   }
@@ -283,6 +289,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<CurrencyEntity> currencies)? loaded,
+    TResult? Function(String message)? error,
   }) {
     return initial?.call();
   }
@@ -293,6 +300,7 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<CurrencyEntity> currencies)? loaded,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -304,9 +312,10 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialCurrencyInfoState value) initial,
-    required TResult Function(_LoadingCurrencyInfoState value) loading,
-    required TResult Function(_LoadedCurrencyInfoState value) loaded,
+    required TResult Function(InitialCurrencyInfoState value) initial,
+    required TResult Function(LoadingCurrencyInfoState value) loading,
+    required TResult Function(LoadedCurrencyInfoState value) loaded,
+    required TResult Function(ErrorCurrencyInfoState value) error,
   }) {
     return initial(this);
   }
@@ -314,9 +323,10 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialCurrencyInfoState value)? initial,
-    TResult? Function(_LoadingCurrencyInfoState value)? loading,
-    TResult? Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(InitialCurrencyInfoState value)? initial,
+    TResult? Function(LoadingCurrencyInfoState value)? loading,
+    TResult? Function(LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(ErrorCurrencyInfoState value)? error,
   }) {
     return initial?.call(this);
   }
@@ -324,9 +334,10 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialCurrencyInfoState value)? initial,
-    TResult Function(_LoadingCurrencyInfoState value)? loading,
-    TResult Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult Function(InitialCurrencyInfoState value)? initial,
+    TResult Function(LoadingCurrencyInfoState value)? loading,
+    TResult Function(LoadedCurrencyInfoState value)? loaded,
+    TResult Function(ErrorCurrencyInfoState value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -336,31 +347,30 @@ class _$_InitialCurrencyInfoState implements _InitialCurrencyInfoState {
   }
 }
 
-abstract class _InitialCurrencyInfoState implements CurrencyInfoState {
-  const factory _InitialCurrencyInfoState() = _$_InitialCurrencyInfoState;
+abstract class InitialCurrencyInfoState implements CurrencyInfoState {
+  const factory InitialCurrencyInfoState() = _$InitialCurrencyInfoState;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCurrencyInfoStateCopyWith<$Res> {
-  factory _$$_LoadingCurrencyInfoStateCopyWith(
-          _$_LoadingCurrencyInfoState value,
-          $Res Function(_$_LoadingCurrencyInfoState) then) =
-      __$$_LoadingCurrencyInfoStateCopyWithImpl<$Res>;
+abstract class _$$LoadingCurrencyInfoStateCopyWith<$Res> {
+  factory _$$LoadingCurrencyInfoStateCopyWith(_$LoadingCurrencyInfoState value,
+          $Res Function(_$LoadingCurrencyInfoState) then) =
+      __$$LoadingCurrencyInfoStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCurrencyInfoStateCopyWithImpl<$Res>
-    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$_LoadingCurrencyInfoState>
-    implements _$$_LoadingCurrencyInfoStateCopyWith<$Res> {
-  __$$_LoadingCurrencyInfoStateCopyWithImpl(_$_LoadingCurrencyInfoState _value,
-      $Res Function(_$_LoadingCurrencyInfoState) _then)
+class __$$LoadingCurrencyInfoStateCopyWithImpl<$Res>
+    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$LoadingCurrencyInfoState>
+    implements _$$LoadingCurrencyInfoStateCopyWith<$Res> {
+  __$$LoadingCurrencyInfoStateCopyWithImpl(_$LoadingCurrencyInfoState _value,
+      $Res Function(_$LoadingCurrencyInfoState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
-  const _$_LoadingCurrencyInfoState();
+class _$LoadingCurrencyInfoState implements LoadingCurrencyInfoState {
+  const _$LoadingCurrencyInfoState();
 
   @override
   String toString() {
@@ -371,7 +381,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadingCurrencyInfoState);
+            other is _$LoadingCurrencyInfoState);
   }
 
   @override
@@ -383,6 +393,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<CurrencyEntity> currencies) loaded,
+    required TResult Function(String message) error,
   }) {
     return loading();
   }
@@ -393,6 +404,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<CurrencyEntity> currencies)? loaded,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -403,6 +415,7 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<CurrencyEntity> currencies)? loaded,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -414,9 +427,10 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialCurrencyInfoState value) initial,
-    required TResult Function(_LoadingCurrencyInfoState value) loading,
-    required TResult Function(_LoadedCurrencyInfoState value) loaded,
+    required TResult Function(InitialCurrencyInfoState value) initial,
+    required TResult Function(LoadingCurrencyInfoState value) loading,
+    required TResult Function(LoadedCurrencyInfoState value) loaded,
+    required TResult Function(ErrorCurrencyInfoState value) error,
   }) {
     return loading(this);
   }
@@ -424,9 +438,10 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialCurrencyInfoState value)? initial,
-    TResult? Function(_LoadingCurrencyInfoState value)? loading,
-    TResult? Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(InitialCurrencyInfoState value)? initial,
+    TResult? Function(LoadingCurrencyInfoState value)? loading,
+    TResult? Function(LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(ErrorCurrencyInfoState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -434,9 +449,10 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialCurrencyInfoState value)? initial,
-    TResult Function(_LoadingCurrencyInfoState value)? loading,
-    TResult Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult Function(InitialCurrencyInfoState value)? initial,
+    TResult Function(LoadingCurrencyInfoState value)? loading,
+    TResult Function(LoadedCurrencyInfoState value)? loaded,
+    TResult Function(ErrorCurrencyInfoState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -446,25 +462,25 @@ class _$_LoadingCurrencyInfoState implements _LoadingCurrencyInfoState {
   }
 }
 
-abstract class _LoadingCurrencyInfoState implements CurrencyInfoState {
-  const factory _LoadingCurrencyInfoState() = _$_LoadingCurrencyInfoState;
+abstract class LoadingCurrencyInfoState implements CurrencyInfoState {
+  const factory LoadingCurrencyInfoState() = _$LoadingCurrencyInfoState;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCurrencyInfoStateCopyWith<$Res> {
-  factory _$$_LoadedCurrencyInfoStateCopyWith(_$_LoadedCurrencyInfoState value,
-          $Res Function(_$_LoadedCurrencyInfoState) then) =
-      __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>;
+abstract class _$$LoadedCurrencyInfoStateCopyWith<$Res> {
+  factory _$$LoadedCurrencyInfoStateCopyWith(_$LoadedCurrencyInfoState value,
+          $Res Function(_$LoadedCurrencyInfoState) then) =
+      __$$LoadedCurrencyInfoStateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CurrencyEntity> currencies});
 }
 
 /// @nodoc
-class __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>
-    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$_LoadedCurrencyInfoState>
-    implements _$$_LoadedCurrencyInfoStateCopyWith<$Res> {
-  __$$_LoadedCurrencyInfoStateCopyWithImpl(_$_LoadedCurrencyInfoState _value,
-      $Res Function(_$_LoadedCurrencyInfoState) _then)
+class __$$LoadedCurrencyInfoStateCopyWithImpl<$Res>
+    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$LoadedCurrencyInfoState>
+    implements _$$LoadedCurrencyInfoStateCopyWith<$Res> {
+  __$$LoadedCurrencyInfoStateCopyWithImpl(_$LoadedCurrencyInfoState _value,
+      $Res Function(_$LoadedCurrencyInfoState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -472,7 +488,7 @@ class __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>
   $Res call({
     Object? currencies = null,
   }) {
-    return _then(_$_LoadedCurrencyInfoState(
+    return _then(_$LoadedCurrencyInfoState(
       null == currencies
           ? _value._currencies
           : currencies // ignore: cast_nullable_to_non_nullable
@@ -483,8 +499,8 @@ class __$$_LoadedCurrencyInfoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
-  const _$_LoadedCurrencyInfoState(final List<CurrencyEntity> currencies)
+class _$LoadedCurrencyInfoState implements LoadedCurrencyInfoState {
+  const _$LoadedCurrencyInfoState(final List<CurrencyEntity> currencies)
       : _currencies = currencies;
 
   final List<CurrencyEntity> _currencies;
@@ -504,7 +520,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadedCurrencyInfoState &&
+            other is _$LoadedCurrencyInfoState &&
             const DeepCollectionEquality()
                 .equals(other._currencies, _currencies));
   }
@@ -516,10 +532,9 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCurrencyInfoStateCopyWith<_$_LoadedCurrencyInfoState>
-      get copyWith =>
-          __$$_LoadedCurrencyInfoStateCopyWithImpl<_$_LoadedCurrencyInfoState>(
-              this, _$identity);
+  _$$LoadedCurrencyInfoStateCopyWith<_$LoadedCurrencyInfoState> get copyWith =>
+      __$$LoadedCurrencyInfoStateCopyWithImpl<_$LoadedCurrencyInfoState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -527,6 +542,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<CurrencyEntity> currencies) loaded,
+    required TResult Function(String message) error,
   }) {
     return loaded(currencies);
   }
@@ -537,6 +553,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<CurrencyEntity> currencies)? loaded,
+    TResult? Function(String message)? error,
   }) {
     return loaded?.call(currencies);
   }
@@ -547,6 +564,7 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<CurrencyEntity> currencies)? loaded,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -558,9 +576,10 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialCurrencyInfoState value) initial,
-    required TResult Function(_LoadingCurrencyInfoState value) loading,
-    required TResult Function(_LoadedCurrencyInfoState value) loaded,
+    required TResult Function(InitialCurrencyInfoState value) initial,
+    required TResult Function(LoadingCurrencyInfoState value) loading,
+    required TResult Function(LoadedCurrencyInfoState value) loaded,
+    required TResult Function(ErrorCurrencyInfoState value) error,
   }) {
     return loaded(this);
   }
@@ -568,9 +587,10 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialCurrencyInfoState value)? initial,
-    TResult? Function(_LoadingCurrencyInfoState value)? loading,
-    TResult? Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(InitialCurrencyInfoState value)? initial,
+    TResult? Function(LoadingCurrencyInfoState value)? loading,
+    TResult? Function(LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(ErrorCurrencyInfoState value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -578,9 +598,10 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialCurrencyInfoState value)? initial,
-    TResult Function(_LoadingCurrencyInfoState value)? loading,
-    TResult Function(_LoadedCurrencyInfoState value)? loaded,
+    TResult Function(InitialCurrencyInfoState value)? initial,
+    TResult Function(LoadingCurrencyInfoState value)? loading,
+    TResult Function(LoadedCurrencyInfoState value)? loaded,
+    TResult Function(ErrorCurrencyInfoState value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -590,12 +611,159 @@ class _$_LoadedCurrencyInfoState implements _LoadedCurrencyInfoState {
   }
 }
 
-abstract class _LoadedCurrencyInfoState implements CurrencyInfoState {
-  const factory _LoadedCurrencyInfoState(
-      final List<CurrencyEntity> currencies) = _$_LoadedCurrencyInfoState;
+abstract class LoadedCurrencyInfoState implements CurrencyInfoState {
+  const factory LoadedCurrencyInfoState(final List<CurrencyEntity> currencies) =
+      _$LoadedCurrencyInfoState;
 
   List<CurrencyEntity> get currencies;
   @JsonKey(ignore: true)
-  _$$_LoadedCurrencyInfoStateCopyWith<_$_LoadedCurrencyInfoState>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$LoadedCurrencyInfoStateCopyWith<_$LoadedCurrencyInfoState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorCurrencyInfoStateCopyWith<$Res> {
+  factory _$$ErrorCurrencyInfoStateCopyWith(_$ErrorCurrencyInfoState value,
+          $Res Function(_$ErrorCurrencyInfoState) then) =
+      __$$ErrorCurrencyInfoStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorCurrencyInfoStateCopyWithImpl<$Res>
+    extends _$CurrencyInfoStateCopyWithImpl<$Res, _$ErrorCurrencyInfoState>
+    implements _$$ErrorCurrencyInfoStateCopyWith<$Res> {
+  __$$ErrorCurrencyInfoStateCopyWithImpl(_$ErrorCurrencyInfoState _value,
+      $Res Function(_$ErrorCurrencyInfoState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorCurrencyInfoState(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorCurrencyInfoState implements ErrorCurrencyInfoState {
+  const _$ErrorCurrencyInfoState(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'CurrencyInfoState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorCurrencyInfoState &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorCurrencyInfoStateCopyWith<_$ErrorCurrencyInfoState> get copyWith =>
+      __$$ErrorCurrencyInfoStateCopyWithImpl<_$ErrorCurrencyInfoState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<CurrencyEntity> currencies) loaded,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<CurrencyEntity> currencies)? loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<CurrencyEntity> currencies)? loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialCurrencyInfoState value) initial,
+    required TResult Function(LoadingCurrencyInfoState value) loading,
+    required TResult Function(LoadedCurrencyInfoState value) loaded,
+    required TResult Function(ErrorCurrencyInfoState value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialCurrencyInfoState value)? initial,
+    TResult? Function(LoadingCurrencyInfoState value)? loading,
+    TResult? Function(LoadedCurrencyInfoState value)? loaded,
+    TResult? Function(ErrorCurrencyInfoState value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialCurrencyInfoState value)? initial,
+    TResult Function(LoadingCurrencyInfoState value)? loading,
+    TResult Function(LoadedCurrencyInfoState value)? loaded,
+    TResult Function(ErrorCurrencyInfoState value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorCurrencyInfoState implements CurrencyInfoState {
+  const factory ErrorCurrencyInfoState(final String message) =
+      _$ErrorCurrencyInfoState;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorCurrencyInfoStateCopyWith<_$ErrorCurrencyInfoState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

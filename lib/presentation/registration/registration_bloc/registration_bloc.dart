@@ -23,7 +23,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
     response.fold(
       (failure) => emit(RegistrationState.error(failure.message)),
-      (user) => emit(const RegistrationState.success()),
+      (success) => emit(const RegistrationState.success()),
     );
   }
 }
