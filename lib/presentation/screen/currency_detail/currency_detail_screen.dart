@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class CurrencyDetailScreen extends StatefulWidget {
+class CurrencyDetailScreen extends StatelessWidget {
   const CurrencyDetailScreen({
     super.key,
     required this.currency,
@@ -19,65 +19,55 @@ class CurrencyDetailScreen extends StatefulWidget {
   final CurrencyEntity currency;
 
   @override
-  State<CurrencyDetailScreen> createState() => _CurrencyDetailScreenState();
-}
-
-class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
-  @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    late Widget chart;
 
     final dateNow = DateTime.now();
 
     final dateTo = DateTime(dateNow.year, dateNow.month, dateNow.day - 3);
     final dateFrom = DateTime(dateTo.year - 1, dateTo.month, dateTo.day);
 
-    final base = widget.currency.base;
-    final currentCode = widget.currency.code;
+    final base = currency.base;
+    final currentCode = currency.code;
 
-    currencyTimeSeriesBloc.add(
-      GetCurrencyTimeSeriesEvent(
-        base!,
-        currentCode,
-        dateFrom,
-        dateTo,
-      ),
-    );
-  }
-
-  final currencyTimeSeriesBloc = injector<CurrencyTimeSeriesBloc>();
-
-  @override
-  Widget build(BuildContext context) {
-    late Widget chart;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppStrings.details),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppConstants.mainPaddingWidth,
-          vertical: AppConstants.mainPaddingHeight,
-        ),
-        child: Column(children: [
-          CurrentRateWidget(currency: widget.currency),
-          SizedBox(height: AppConstants.mainPaddingHeight * 2),
-          BlocBuilder<CurrencyTimeSeriesBloc, CurrencyTimeSeriesState>(
-            bloc: currencyTimeSeriesBloc,
-            builder: (context, state) {
-              state.when(
-                initial: () => chart = const SizedBox(),
-                loading: () => chart = const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                loaded: (currencyTimeSeries) => chart = ChartWidget(
-                  currencyTimeSeries: currencyTimeSeries,
-                ),
-              );
-              return chart;
-            },
+    return BlocProvider(
+      create: (context) => injector<CurrencyTimeSeriesBloc>()
+        ..add(
+          GetCurrencyTimeSeriesEvent(
+            base!,
+            currentCode,
+            dateFrom,
+            dateTo,
           ),
-        ]),
+        ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(AppStrings.details),
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstants.mainPaddingWidth,
+            vertical: AppConstants.mainPaddingHeight,
+          ),
+          child: Column(children: [
+            CurrentRateWidget(currency: currency),
+            SizedBox(height: AppConstants.mainPaddingHeight * 2),
+            BlocBuilder<CurrencyTimeSeriesBloc, CurrencyTimeSeriesState>(
+              builder: (context, state) {
+                state.when(
+                  initial: () => chart = const SizedBox(),
+                  loading: () => chart = const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  loaded: (currencyTimeSeries) => chart = ChartWidget(
+                    currencyTimeSeries: currencyTimeSeries,
+                  ),
+                );
+                return chart;
+              },
+            ),
+          ]),
+        ),
       ),
     );
   }

@@ -57,7 +57,8 @@ abstract class $AppRouterAuto extends _i6.RootStackRouter {
       );
     },
     SelectBaseCurrencyRoute.name: (routeData) {
-      final args = routeData.argsAs<SelectBaseCurrencyRouteArgs>();
+      final args = routeData.argsAs<SelectBaseCurrencyRouteArgs>(
+          orElse: () => const SelectBaseCurrencyRouteArgs());
       return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i5.SelectBaseCurrencyScreen(
@@ -155,7 +156,7 @@ class SelectBaseCurrencyRoute
     extends _i6.PageRouteInfo<SelectBaseCurrencyRouteArgs> {
   SelectBaseCurrencyRoute({
     _i7.Key? key,
-    required String currentBase,
+    String? currentBase,
     List<_i6.PageRouteInfo>? children,
   }) : super(
           SelectBaseCurrencyRoute.name,
@@ -175,12 +176,12 @@ class SelectBaseCurrencyRoute
 class SelectBaseCurrencyRouteArgs {
   const SelectBaseCurrencyRouteArgs({
     this.key,
-    required this.currentBase,
+    this.currentBase,
   });
 
   final _i7.Key? key;
 
-  final String currentBase;
+  final String? currentBase;
 
   @override
   String toString() {

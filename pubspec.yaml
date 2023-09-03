@@ -28,6 +28,7 @@ dependencies:
   firebase_auth: ^4.8.0
   email_validator: ^2.1.17
   auto_route: ^7.8.3
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +41,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/icons/
 
   fonts:
     - family: Jost

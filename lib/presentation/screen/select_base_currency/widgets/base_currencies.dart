@@ -14,7 +14,7 @@ class BaseCurrenciesWidget extends StatelessWidget {
     required this.currentBase,
   });
 
-  final String currentBase;
+  final String? currentBase;
   final List<CurrencyEntity> currencies;
 
   @override
@@ -37,7 +37,7 @@ class BaseCurrenciesWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   BlocProvider.of<BaseCurrencyBloc>(context)
-                      .add(SelectBaseCurrencyEvent(currencies[index].code));
+                      .add(SelectBaseCurrencyEvent(currencies[index]));
                   // context.pop();
                   AutoRouter.of(context).pop();
                 },

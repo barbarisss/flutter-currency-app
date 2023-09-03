@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/route/app_router_auto.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
-import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +24,11 @@ class CurrencySliverAppBar extends StatefulWidget {
 
 class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: widget.expandedHeight,
@@ -36,46 +41,106 @@ class _CurrencySliverAppBarState extends State<CurrencySliverAppBar> {
         padding: EdgeInsets.symmetric(
           horizontal: AppConstants.mainPaddingWidth,
         ),
-        child: const Center(
-          child: _BaseCurrencyWidget(),
+        child: const Row(
+          children: [
+            _BaseCurrencyWidget(),
+            Expanded(
+              child: Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: AuthInfoWidget(),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _BaseCurrencyWidget extends StatelessWidget {
+class _BaseCurrencyWidget extends StatefulWidget {
   const _BaseCurrencyWidget({super.key});
 
   @override
+  State<_BaseCurrencyWidget> createState() => _BaseCurrencyWidgetState();
+}
+
+class _BaseCurrencyWidgetState extends State<_BaseCurrencyWidget> {
+  @override
+  void initState() {
+    super.initState();
+    _baseCurrencyBloc.state.maybeWhen(
+      afterSelect: (currency) {
+        // _currencyBloc.add(GetAllCurrencyEvent(currency.code));
+        print('after select  _baseCurrencyBloc');
+      },
+      orElse: () {
+        print('orElseee');
+      },
+    );
+  }
+
+  final _currencyBloc = injector<CurrencyBloc>();
+  final _baseCurrencyBloc = injector<BaseCurrencyBloc>();
+  @override
   Widget build(BuildContext context) {
-    late Widget userWidget;
+    late Widget bodyWidget;
 
     return BlocBuilder<CurrencyBloc, CurrencyState>(
+      bloc: _currencyBloc,
       builder: (context, state) {
-        return BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
+        return BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
+          bloc: _baseCurrencyBloc,
           builder: (context, state) {
-            return BlocConsumer<BaseCurrencyBloc, BaseCurrencyState>(
-              builder: (context, state) {
-                print('BaseCurrencyWidget BUILD');
-                final currentBase = state.base;
+            // final currentBase = state.base;
 
-                return GestureDetector(
+            state.when(
+              initial: () {
+                bodyWidget = ElevatedButton(
+                  onPressed: () {
+                    AutoRouter.of(context).push(
+                      SelectBaseCurrencyRoute(),
+                    );
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(EdgeInsets.symmetric(
+                      vertical: AppConstants.mainPaddingHeight,
+                      horizontal: AppConstants.mainPaddingWidth,
+                    )),
+                    textStyle: MaterialStateProperty.all(
+                      const TextStyle(
+                        fontSize: 14,
+                        color: AppColors.white,
+                      ),
+                    ),
+                    backgroundColor: MaterialStateProperty.all(
+                      AppColors.blue,
+                    ),
+                    foregroundColor: MaterialStateProperty.all(AppColors.white),
+                    elevation: MaterialStateProperty.all(0),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.r),
+                      ),
+                    ),
+                  ),
+                  child: const Text('Select base'),
+                );
+                ;
+              },
+              afterSelect: (currency) {
+                bodyWidget = GestureDetector(
                   onTap: () {
                     // context.goNamed(AppRouter.selectBaseCurrency,
                     //     extra: currentBase);
 
                     AutoRouter.of(context).push(
-                      SelectBaseCurrencyRoute(currentBase: currentBase),
+                      SelectBaseCurrencyRoute(currentBase: currency.code),
                     );
-
-                    BlocProvider.of<CurrencyInfoBloc>(context)
-                        .add(const GetCurrenciesInfoEvent());
                   },
                   child: Row(
                     children: [
                       Text(
-                        currentBase,
+                        currency.symbol,
                         style: TextStyle(
                           color: AppColors.black,
                           fontSize: 32.sp,
@@ -86,76 +151,86 @@ class _BaseCurrencyWidget extends StatelessWidget {
                         Icons.arrow_drop_down_rounded,
                         size: 36.r,
                       ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: BlocBuilder<UserBloc, UserState>(
-                            builder: (context, state) {
-                              state.maybeWhen(
-                                authorized: (email) {
-                                  userWidget = Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        email,
-                                        style: const TextStyle(
-                                          color: AppColors.grey,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                          width: AppConstants.mainPaddingWidth /
-                                              4),
-                                      IconButton(
-                                        onPressed: () {
-                                          context.read<UserBloc>().add(
-                                                const SignOutEvent(),
-                                              );
-                                        },
-                                        icon: const Icon(
-                                          Icons.logout_outlined,
-                                          color: AppColors.lightBlue,
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                                unauthorized: () {
-                                  userWidget = TextButton(
-                                    onPressed: () {
-                                      // context.goNamed(AppRouter.login);
-                                      AutoRouter.of(context).push(
-                                        const LoginRoute(),
-                                      );
-                                    },
-                                    child: const Text(
-                                      'Log in',
-                                      style: TextStyle(
-                                        color: AppColors.lightBlue,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                orElse: () {
-                                  userWidget = const SizedBox();
-                                },
-                              );
-                              return userWidget;
-                            },
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 );
               },
-              listener: (context, state) {
-                print('BaseCurrencyBlocListener HERE WE ARE)))');
+            );
+
+            return bodyWidget;
+          },
+          listener: (context, state) {
+            print('BaseCurrencyBlocListener HERE WE ARE)))');
+            state.maybeWhen(
+              afterSelect: (currency) {
                 BlocProvider.of<CurrencyBloc>(context)
-                    .add(GetAllCurrencyEvent(state.base));
+                    .add(GetAllCurrencyEvent(currency.code));
               },
+              orElse: () {},
             );
           },
         );
+      },
+    );
+  }
+}
+
+class AuthInfoWidget extends StatelessWidget {
+  const AuthInfoWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    late Widget authInfo;
+
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        state.maybeWhen(
+          authorized: (email) {
+            authInfo = Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  email,
+                  style: const TextStyle(
+                    color: AppColors.grey,
+                  ),
+                ),
+                SizedBox(width: AppConstants.mainPaddingWidth / 4),
+                IconButton(
+                  onPressed: () {
+                    context.read<UserBloc>().add(
+                          const SignOutEvent(),
+                        );
+                  },
+                  icon: const Icon(
+                    Icons.logout_outlined,
+                    color: AppColors.lightBlue,
+                  ),
+                ),
+              ],
+            );
+          },
+          unauthorized: () {
+            authInfo = TextButton(
+              onPressed: () {
+                // context.goNamed(AppRouter.login);
+                AutoRouter.of(context).push(
+                  const LoginRoute(),
+                );
+              },
+              child: const Text(
+                'Log in',
+                style: TextStyle(
+                  color: AppColors.lightBlue,
+                ),
+              ),
+            );
+          },
+          orElse: () {
+            authInfo = const SizedBox();
+          },
+        );
+        return authInfo;
       },
     );
   }

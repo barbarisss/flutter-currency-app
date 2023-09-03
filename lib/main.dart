@@ -31,22 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = AppRouterAuto();
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => injector<CurrencyBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => injector<BaseCurrencyBloc>()
-            ..add(const SelectBaseCurrencyEvent('USD')),
-        ),
-        BlocProvider(
-          create: (context) => injector<CurrencyInfoBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => injector<CurrencyTimeSeriesBloc>(),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => injector<BaseCurrencyBloc>(),
       child: ScreenUtilInit(
         builder: (context, widget) {
           return MaterialApp.router(

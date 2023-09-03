@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BaseCurrencyEvent {
-  String get base => throw _privateConstructorUsedError;
+  CurrencyEntity get currency => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String base) selectBaseCurrency,
+    required TResult Function(CurrencyEntity currency) selectBaseCurrency,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String base)? selectBaseCurrency,
+    TResult? Function(CurrencyEntity currency)? selectBaseCurrency,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String base)? selectBaseCurrency,
+    TResult Function(CurrencyEntity currency)? selectBaseCurrency,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +61,9 @@ abstract class $BaseCurrencyEventCopyWith<$Res> {
           BaseCurrencyEvent value, $Res Function(BaseCurrencyEvent) then) =
       _$BaseCurrencyEventCopyWithImpl<$Res, BaseCurrencyEvent>;
   @useResult
-  $Res call({String base});
+  $Res call({CurrencyEntity currency});
+
+  $CurrencyEntityCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -77,14 +79,22 @@ class _$BaseCurrencyEventCopyWithImpl<$Res, $Val extends BaseCurrencyEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? base = null,
+    Object? currency = null,
   }) {
     return _then(_value.copyWith(
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyEntity,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CurrencyEntityCopyWith<$Res> get currency {
+    return $CurrencyEntityCopyWith<$Res>(_value.currency, (value) {
+      return _then(_value.copyWith(currency: value) as $Val);
+    });
   }
 }
 
@@ -96,7 +106,10 @@ abstract class _$$SelectBaseCurrencyEventCopyWith<$Res>
       __$$SelectBaseCurrencyEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String base});
+  $Res call({CurrencyEntity currency});
+
+  @override
+  $CurrencyEntityCopyWith<$Res> get currency;
 }
 
 /// @nodoc
@@ -110,13 +123,13 @@ class __$$SelectBaseCurrencyEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? base = null,
+    Object? currency = null,
   }) {
     return _then(_$SelectBaseCurrencyEvent(
-      null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyEntity,
     ));
   }
 }
@@ -124,14 +137,14 @@ class __$$SelectBaseCurrencyEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectBaseCurrencyEvent implements SelectBaseCurrencyEvent {
-  const _$SelectBaseCurrencyEvent(this.base);
+  const _$SelectBaseCurrencyEvent(this.currency);
 
   @override
-  final String base;
+  final CurrencyEntity currency;
 
   @override
   String toString() {
-    return 'BaseCurrencyEvent.selectBaseCurrency(base: $base)';
+    return 'BaseCurrencyEvent.selectBaseCurrency(currency: $currency)';
   }
 
   @override
@@ -139,11 +152,12 @@ class _$SelectBaseCurrencyEvent implements SelectBaseCurrencyEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectBaseCurrencyEvent &&
-            (identical(other.base, base) || other.base == base));
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, base);
+  int get hashCode => Object.hash(runtimeType, currency);
 
   @JsonKey(ignore: true)
   @override
@@ -155,27 +169,27 @@ class _$SelectBaseCurrencyEvent implements SelectBaseCurrencyEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String base) selectBaseCurrency,
+    required TResult Function(CurrencyEntity currency) selectBaseCurrency,
   }) {
-    return selectBaseCurrency(base);
+    return selectBaseCurrency(currency);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String base)? selectBaseCurrency,
+    TResult? Function(CurrencyEntity currency)? selectBaseCurrency,
   }) {
-    return selectBaseCurrency?.call(base);
+    return selectBaseCurrency?.call(currency);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String base)? selectBaseCurrency,
+    TResult Function(CurrencyEntity currency)? selectBaseCurrency,
     required TResult orElse(),
   }) {
     if (selectBaseCurrency != null) {
-      return selectBaseCurrency(base);
+      return selectBaseCurrency(currency);
     }
     return orElse();
   }
@@ -210,11 +224,11 @@ class _$SelectBaseCurrencyEvent implements SelectBaseCurrencyEvent {
 }
 
 abstract class SelectBaseCurrencyEvent implements BaseCurrencyEvent {
-  const factory SelectBaseCurrencyEvent(final String base) =
+  const factory SelectBaseCurrencyEvent(final CurrencyEntity currency) =
       _$SelectBaseCurrencyEvent;
 
   @override
-  String get base;
+  CurrencyEntity get currency;
   @override
   @JsonKey(ignore: true)
   _$$SelectBaseCurrencyEventCopyWith<_$SelectBaseCurrencyEvent> get copyWith =>
@@ -223,48 +237,43 @@ abstract class SelectBaseCurrencyEvent implements BaseCurrencyEvent {
 
 /// @nodoc
 mixin _$BaseCurrencyState {
-  String get base => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String base) initial,
-    required TResult Function(String base) afterSelect,
+    required TResult Function() initial,
+    required TResult Function(CurrencyEntity currency) afterSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String base)? initial,
-    TResult? Function(String base)? afterSelect,
+    TResult? Function()? initial,
+    TResult? Function(CurrencyEntity currency)? afterSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String base)? initial,
-    TResult Function(String base)? afterSelect,
+    TResult Function()? initial,
+    TResult Function(CurrencyEntity currency)? afterSelect,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialBaseCurrencyState value) initial,
-    required TResult Function(_AfterSelectBaseCurrencyState value) afterSelect,
+    required TResult Function(InitialBaseCurrencyState value) initial,
+    required TResult Function(AfterSelectBaseCurrencyState value) afterSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialBaseCurrencyState value)? initial,
-    TResult? Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult? Function(InitialBaseCurrencyState value)? initial,
+    TResult? Function(AfterSelectBaseCurrencyState value)? afterSelect,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialBaseCurrencyState value)? initial,
-    TResult Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult Function(InitialBaseCurrencyState value)? initial,
+    TResult Function(AfterSelectBaseCurrencyState value)? afterSelect,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $BaseCurrencyStateCopyWith<BaseCurrencyState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -273,8 +282,6 @@ abstract class $BaseCurrencyStateCopyWith<$Res> {
   factory $BaseCurrencyStateCopyWith(
           BaseCurrencyState value, $Res Function(BaseCurrencyState) then) =
       _$BaseCurrencyStateCopyWithImpl<$Res, BaseCurrencyState>;
-  @useResult
-  $Res call({String base});
 }
 
 /// @nodoc
@@ -286,113 +293,71 @@ class _$BaseCurrencyStateCopyWithImpl<$Res, $Val extends BaseCurrencyState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? base = null,
-  }) {
-    return _then(_value.copyWith(
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_InitialBaseCurrencyStateCopyWith<$Res>
-    implements $BaseCurrencyStateCopyWith<$Res> {
-  factory _$$_InitialBaseCurrencyStateCopyWith(
-          _$_InitialBaseCurrencyState value,
-          $Res Function(_$_InitialBaseCurrencyState) then) =
-      __$$_InitialBaseCurrencyStateCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String base});
+abstract class _$$InitialBaseCurrencyStateCopyWith<$Res> {
+  factory _$$InitialBaseCurrencyStateCopyWith(_$InitialBaseCurrencyState value,
+          $Res Function(_$InitialBaseCurrencyState) then) =
+      __$$InitialBaseCurrencyStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialBaseCurrencyStateCopyWithImpl<$Res>
-    extends _$BaseCurrencyStateCopyWithImpl<$Res, _$_InitialBaseCurrencyState>
-    implements _$$_InitialBaseCurrencyStateCopyWith<$Res> {
-  __$$_InitialBaseCurrencyStateCopyWithImpl(_$_InitialBaseCurrencyState _value,
-      $Res Function(_$_InitialBaseCurrencyState) _then)
+class __$$InitialBaseCurrencyStateCopyWithImpl<$Res>
+    extends _$BaseCurrencyStateCopyWithImpl<$Res, _$InitialBaseCurrencyState>
+    implements _$$InitialBaseCurrencyStateCopyWith<$Res> {
+  __$$InitialBaseCurrencyStateCopyWithImpl(_$InitialBaseCurrencyState _value,
+      $Res Function(_$InitialBaseCurrencyState) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? base = null,
-  }) {
-    return _then(_$_InitialBaseCurrencyState(
-      null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_InitialBaseCurrencyState implements _InitialBaseCurrencyState {
-  const _$_InitialBaseCurrencyState(this.base);
-
-  @override
-  final String base;
+class _$InitialBaseCurrencyState implements InitialBaseCurrencyState {
+  const _$InitialBaseCurrencyState();
 
   @override
   String toString() {
-    return 'BaseCurrencyState.initial(base: $base)';
+    return 'BaseCurrencyState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InitialBaseCurrencyState &&
-            (identical(other.base, base) || other.base == base));
+            other is _$InitialBaseCurrencyState);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, base);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_InitialBaseCurrencyStateCopyWith<_$_InitialBaseCurrencyState>
-      get copyWith => __$$_InitialBaseCurrencyStateCopyWithImpl<
-          _$_InitialBaseCurrencyState>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String base) initial,
-    required TResult Function(String base) afterSelect,
+    required TResult Function() initial,
+    required TResult Function(CurrencyEntity currency) afterSelect,
   }) {
-    return initial(base);
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String base)? initial,
-    TResult? Function(String base)? afterSelect,
+    TResult? Function()? initial,
+    TResult? Function(CurrencyEntity currency)? afterSelect,
   }) {
-    return initial?.call(base);
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String base)? initial,
-    TResult Function(String base)? afterSelect,
+    TResult Function()? initial,
+    TResult Function(CurrencyEntity currency)? afterSelect,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(base);
+      return initial();
     }
     return orElse();
   }
@@ -400,8 +365,8 @@ class _$_InitialBaseCurrencyState implements _InitialBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialBaseCurrencyState value) initial,
-    required TResult Function(_AfterSelectBaseCurrencyState value) afterSelect,
+    required TResult Function(InitialBaseCurrencyState value) initial,
+    required TResult Function(AfterSelectBaseCurrencyState value) afterSelect,
   }) {
     return initial(this);
   }
@@ -409,8 +374,8 @@ class _$_InitialBaseCurrencyState implements _InitialBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialBaseCurrencyState value)? initial,
-    TResult? Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult? Function(InitialBaseCurrencyState value)? initial,
+    TResult? Function(AfterSelectBaseCurrencyState value)? afterSelect,
   }) {
     return initial?.call(this);
   }
@@ -418,8 +383,8 @@ class _$_InitialBaseCurrencyState implements _InitialBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialBaseCurrencyState value)? initial,
-    TResult Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult Function(InitialBaseCurrencyState value)? initial,
+    TResult Function(AfterSelectBaseCurrencyState value)? afterSelect,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -429,112 +394,113 @@ class _$_InitialBaseCurrencyState implements _InitialBaseCurrencyState {
   }
 }
 
-abstract class _InitialBaseCurrencyState implements BaseCurrencyState {
-  const factory _InitialBaseCurrencyState(final String base) =
-      _$_InitialBaseCurrencyState;
-
-  @override
-  String get base;
-  @override
-  @JsonKey(ignore: true)
-  _$$_InitialBaseCurrencyStateCopyWith<_$_InitialBaseCurrencyState>
-      get copyWith => throw _privateConstructorUsedError;
+abstract class InitialBaseCurrencyState implements BaseCurrencyState {
+  const factory InitialBaseCurrencyState() = _$InitialBaseCurrencyState;
 }
 
 /// @nodoc
-abstract class _$$_AfterSelectBaseCurrencyStateCopyWith<$Res>
-    implements $BaseCurrencyStateCopyWith<$Res> {
-  factory _$$_AfterSelectBaseCurrencyStateCopyWith(
-          _$_AfterSelectBaseCurrencyState value,
-          $Res Function(_$_AfterSelectBaseCurrencyState) then) =
-      __$$_AfterSelectBaseCurrencyStateCopyWithImpl<$Res>;
-  @override
+abstract class _$$AfterSelectBaseCurrencyStateCopyWith<$Res> {
+  factory _$$AfterSelectBaseCurrencyStateCopyWith(
+          _$AfterSelectBaseCurrencyState value,
+          $Res Function(_$AfterSelectBaseCurrencyState) then) =
+      __$$AfterSelectBaseCurrencyStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String base});
+  $Res call({CurrencyEntity currency});
+
+  $CurrencyEntityCopyWith<$Res> get currency;
 }
 
 /// @nodoc
-class __$$_AfterSelectBaseCurrencyStateCopyWithImpl<$Res>
+class __$$AfterSelectBaseCurrencyStateCopyWithImpl<$Res>
     extends _$BaseCurrencyStateCopyWithImpl<$Res,
-        _$_AfterSelectBaseCurrencyState>
-    implements _$$_AfterSelectBaseCurrencyStateCopyWith<$Res> {
-  __$$_AfterSelectBaseCurrencyStateCopyWithImpl(
-      _$_AfterSelectBaseCurrencyState _value,
-      $Res Function(_$_AfterSelectBaseCurrencyState) _then)
+        _$AfterSelectBaseCurrencyState>
+    implements _$$AfterSelectBaseCurrencyStateCopyWith<$Res> {
+  __$$AfterSelectBaseCurrencyStateCopyWithImpl(
+      _$AfterSelectBaseCurrencyState _value,
+      $Res Function(_$AfterSelectBaseCurrencyState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? base = null,
+    Object? currency = null,
   }) {
-    return _then(_$_AfterSelectBaseCurrencyState(
-      null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$AfterSelectBaseCurrencyState(
+      null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyEntity,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CurrencyEntityCopyWith<$Res> get currency {
+    return $CurrencyEntityCopyWith<$Res>(_value.currency, (value) {
+      return _then(_value.copyWith(currency: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_AfterSelectBaseCurrencyState implements _AfterSelectBaseCurrencyState {
-  const _$_AfterSelectBaseCurrencyState(this.base);
+class _$AfterSelectBaseCurrencyState implements AfterSelectBaseCurrencyState {
+  const _$AfterSelectBaseCurrencyState(this.currency);
 
   @override
-  final String base;
+  final CurrencyEntity currency;
 
   @override
   String toString() {
-    return 'BaseCurrencyState.afterSelect(base: $base)';
+    return 'BaseCurrencyState.afterSelect(currency: $currency)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AfterSelectBaseCurrencyState &&
-            (identical(other.base, base) || other.base == base));
+            other is _$AfterSelectBaseCurrencyState &&
+            (identical(other.currency, currency) ||
+                other.currency == currency));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, base);
+  int get hashCode => Object.hash(runtimeType, currency);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AfterSelectBaseCurrencyStateCopyWith<_$_AfterSelectBaseCurrencyState>
-      get copyWith => __$$_AfterSelectBaseCurrencyStateCopyWithImpl<
-          _$_AfterSelectBaseCurrencyState>(this, _$identity);
+  _$$AfterSelectBaseCurrencyStateCopyWith<_$AfterSelectBaseCurrencyState>
+      get copyWith => __$$AfterSelectBaseCurrencyStateCopyWithImpl<
+          _$AfterSelectBaseCurrencyState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String base) initial,
-    required TResult Function(String base) afterSelect,
+    required TResult Function() initial,
+    required TResult Function(CurrencyEntity currency) afterSelect,
   }) {
-    return afterSelect(base);
+    return afterSelect(currency);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String base)? initial,
-    TResult? Function(String base)? afterSelect,
+    TResult? Function()? initial,
+    TResult? Function(CurrencyEntity currency)? afterSelect,
   }) {
-    return afterSelect?.call(base);
+    return afterSelect?.call(currency);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String base)? initial,
-    TResult Function(String base)? afterSelect,
+    TResult Function()? initial,
+    TResult Function(CurrencyEntity currency)? afterSelect,
     required TResult orElse(),
   }) {
     if (afterSelect != null) {
-      return afterSelect(base);
+      return afterSelect(currency);
     }
     return orElse();
   }
@@ -542,8 +508,8 @@ class _$_AfterSelectBaseCurrencyState implements _AfterSelectBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialBaseCurrencyState value) initial,
-    required TResult Function(_AfterSelectBaseCurrencyState value) afterSelect,
+    required TResult Function(InitialBaseCurrencyState value) initial,
+    required TResult Function(AfterSelectBaseCurrencyState value) afterSelect,
   }) {
     return afterSelect(this);
   }
@@ -551,8 +517,8 @@ class _$_AfterSelectBaseCurrencyState implements _AfterSelectBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialBaseCurrencyState value)? initial,
-    TResult? Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult? Function(InitialBaseCurrencyState value)? initial,
+    TResult? Function(AfterSelectBaseCurrencyState value)? afterSelect,
   }) {
     return afterSelect?.call(this);
   }
@@ -560,8 +526,8 @@ class _$_AfterSelectBaseCurrencyState implements _AfterSelectBaseCurrencyState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialBaseCurrencyState value)? initial,
-    TResult Function(_AfterSelectBaseCurrencyState value)? afterSelect,
+    TResult Function(InitialBaseCurrencyState value)? initial,
+    TResult Function(AfterSelectBaseCurrencyState value)? afterSelect,
     required TResult orElse(),
   }) {
     if (afterSelect != null) {
@@ -571,14 +537,12 @@ class _$_AfterSelectBaseCurrencyState implements _AfterSelectBaseCurrencyState {
   }
 }
 
-abstract class _AfterSelectBaseCurrencyState implements BaseCurrencyState {
-  const factory _AfterSelectBaseCurrencyState(final String base) =
-      _$_AfterSelectBaseCurrencyState;
+abstract class AfterSelectBaseCurrencyState implements BaseCurrencyState {
+  const factory AfterSelectBaseCurrencyState(final CurrencyEntity currency) =
+      _$AfterSelectBaseCurrencyState;
 
-  @override
-  String get base;
-  @override
+  CurrencyEntity get currency;
   @JsonKey(ignore: true)
-  _$$_AfterSelectBaseCurrencyStateCopyWith<_$_AfterSelectBaseCurrencyState>
+  _$$AfterSelectBaseCurrencyStateCopyWith<_$AfterSelectBaseCurrencyState>
       get copyWith => throw _privateConstructorUsedError;
 }
