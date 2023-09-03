@@ -44,7 +44,7 @@ class CurrencyListWidget extends StatelessWidget {
                     SnackBarService.showSnackBar(
                       context,
                       'Log in to see the details of the currency',
-                      false,
+                      SnackBarType.info,
                     );
                   } else {
                     AutoRouter.of(context).push(

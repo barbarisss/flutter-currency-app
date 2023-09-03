@@ -61,7 +61,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 SnackBarService.showSnackBar(
                   context,
                   'Registration is successful',
-                  false,
+                  SnackBarType.success,
                 );
               }
             },
@@ -113,7 +113,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 SnackBarService.showSnackBar(
                                   context,
                                   'The passwords must match',
-                                  true,
+                                  SnackBarType.error,
                                 );
                                 return;
                               }

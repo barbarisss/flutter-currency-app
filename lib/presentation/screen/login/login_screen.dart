@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/app/route/app_router_auto.gr.dart';
+import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
 import 'package:currency_app/core/utils/strings.dart';
@@ -62,6 +63,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 AutoRouter.of(context).pushAndPopUntil(
                   const CurrenciesRoute(),
                   predicate: (route) => false,
+                );
+                SnackBarService.showSnackBar(
+                  context,
+                  'Log in is successful',
+                  SnackBarType.success,
                 );
               }
             },
