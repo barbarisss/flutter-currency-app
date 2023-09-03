@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
               if (state is LoadingLoginState) {
                 print('LoadingLoginState phh phh phh');
               }
+
               if (state is SuccessLoginState) {
                 print('SuccessLoginState yes yes yes');
                 AutoRouter.of(context).pushAndPopUntil(
@@ -69,107 +70,118 @@ class _LoginScreenState extends State<LoginScreen> {
                   SnackBarType.success,
                 );
               }
+
+              if (state is ErrorLoginState) {
+                SnackBarService.showSnackBar(
+                  context,
+                  state.message,
+                  SnackBarType.error,
+                );
+              }
             },
             builder: (context, state) {
-              state.maybeWhen(loading: () {
-                bodyWidget = const Center(
-                  child: CustomProgressIndicator(),
-                );
-              }, orElse: () {
-                bodyWidget = Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Form(
-                      key: formKey,
-                      child: Column(
-                        children: [
-                          CustomTextField(
-                            controller: emailController,
-                            helperText: AppStrings.email,
-                            onValidate: (email) =>
-                                email != null && !EmailValidator.validate(email)
-                                    ? AppStrings.inputCorrectEmail
-                                    : null,
+              state.maybeWhen(
+                loading: () {
+                  bodyWidget = const Center(
+                    child: CustomProgressIndicator(),
+                  );
+                },
+                orElse: () {
+                  bodyWidget = Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Form(
+                        key: formKey,
+                        child: Column(
+                          children: [
+                            CustomTextField(
+                              controller: emailController,
+                              helperText: AppStrings.email,
+                              onValidate: (email) => email != null &&
+                                      !EmailValidator.validate(email)
+                                  ? AppStrings.inputCorrectEmail
+                                  : null,
+                            ),
+                            SizedBox(height: AppConstants.mainPaddingHeight),
+                            CustomTextField(
+                              controller: passwordController,
+                              helperText: AppStrings.password,
+                              isPassword: true,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: AppConstants.mainPaddingHeight),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              print('validate');
+                              String email = emailController.text.trim();
+                              String password = passwordController.text.trim();
+
+                              context.read<LoginBloc>().add(SignInEvent(
+                                    email: email,
+                                    password: password,
+                                  ));
+                            } else {
+                              print('no validate');
+                            }
+                          },
+                          style: ButtonStyle(
+                            padding:
+                                MaterialStateProperty.all(EdgeInsets.symmetric(
+                              vertical: AppConstants.mainPaddingHeight,
+                            )),
+                            textStyle: MaterialStateProperty.all(
+                              const TextStyle(
+                                fontSize: 16,
+                                color: AppColors.white,
+                              ),
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              AppColors.blue,
+                            ),
+                            foregroundColor:
+                                MaterialStateProperty.all(AppColors.white),
+                            elevation: MaterialStateProperty.all(0),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.r),
+                              ),
+                            ),
                           ),
-                          SizedBox(height: AppConstants.mainPaddingHeight),
-                          CustomTextField(
-                            controller: passwordController,
-                            helperText: AppStrings.password,
-                            isPassword: true,
+                          child: const Text(AppStrings.signIn),
+                        ),
+                      ),
+                      SizedBox(height: AppConstants.mainPaddingHeight),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('${AppStrings.haveAnAccount} '),
+                          GestureDetector(
+                            onTap: () {
+                              AutoRouter.of(context).push(
+                                const RegistrationRoute(),
+                              );
+                              clearControllers();
+                            },
+                            child: const Text(
+                              AppStrings.registrationTitle,
+                              style: TextStyle(
+                                color: AppColors.lightBlue,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ],
-                      ),
-                    ),
-                    SizedBox(height: AppConstants.mainPaddingHeight),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            print('validate');
-                            String email = emailController.text.trim();
-                            String password = passwordController.text.trim();
-
-                            context.read<LoginBloc>().add(SignInEvent(
-                                  email: email,
-                                  password: password,
-                                ));
-                          } else {
-                            print('no validate');
-                          }
-                        },
-                        style: ButtonStyle(
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.symmetric(
-                            vertical: AppConstants.mainPaddingHeight,
-                          )),
-                          textStyle: MaterialStateProperty.all(
-                            const TextStyle(
-                              fontSize: 16,
-                              color: AppColors.white,
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                            AppColors.blue,
-                          ),
-                          foregroundColor:
-                              MaterialStateProperty.all(AppColors.white),
-                          elevation: MaterialStateProperty.all(0),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.r),
-                            ),
-                          ),
-                        ),
-                        child: const Text(AppStrings.signIn),
-                      ),
-                    ),
-                    SizedBox(height: AppConstants.mainPaddingHeight),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('${AppStrings.haveAnAccount} '),
-                        GestureDetector(
-                          onTap: () {
-                            AutoRouter.of(context).push(
-                              const RegistrationRoute(),
-                            );
-                            clearControllers();
-                          },
-                          child: const Text(
-                            AppStrings.registrationTitle,
-                            style: TextStyle(
-                              color: AppColors.lightBlue,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                );
-              });
+                      )
+                    ],
+                  );
+                },
+              );
               return bodyWidget;
             },
           ),

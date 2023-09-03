@@ -19,7 +19,11 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     emit(const RegistrationState.loading());
     final response = await _signUpUseCase(event.email, event.password);
     print(response);
-    emit(const RegistrationState.success());
     print('onSignInEvent end');
+
+    response.fold(
+      (failure) => emit(RegistrationState.error(failure.message)),
+      (user) => emit(const RegistrationState.success()),
+    );
   }
 }

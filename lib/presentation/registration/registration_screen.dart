@@ -55,6 +55,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               if (state is LoadingRegistrationState) {
                 print('SuccessRegistrationState phh phh phh');
               }
+
               if (state is SuccessRegistrationState) {
                 print('SuccessRegistrationState yes yes yes');
                 AutoRouter.of(context).pop();
@@ -62,6 +63,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   context,
                   AppStrings.registrationSuccess,
                   SnackBarType.success,
+                );
+              }
+
+              if (state is ErrorRegistrationState) {
+                print('SuccessRegistrationState yes yes yes');
+
+                SnackBarService.showSnackBar(
+                  context,
+                  state.message,
+                  SnackBarType.error,
                 );
               }
             },

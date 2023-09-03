@@ -18,7 +18,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(const LoginState.loading());
     final response = await _signInUseCase(event.email, event.password);
     print(response);
-    emit(const LoginState.success());
+    // emit(const LoginState.success());
     print('onSignInEvent end');
+    response.fold(
+      (failure) => emit(LoginState.error(failure.message)),
+      (user) => emit(const LoginState.success()),
+    );
   }
 }

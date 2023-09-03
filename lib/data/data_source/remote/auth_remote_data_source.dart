@@ -1,34 +1,42 @@
+import 'package:currency_app/core/error/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRemoteDataSource {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<String> signIn(String email, String password) async {
-    User? firebaseUser = (await _firebaseAuth.signInWithEmailAndPassword(
-            email: email, password: password))
-        .user;
+    try {
+      User? firebaseUser = (await _firebaseAuth.signInWithEmailAndPassword(
+              email: email, password: password))
+          .user;
 
-    print(firebaseUser);
-
-    if (firebaseUser == null) {
-      print('firebaseUser is null');
+      return firebaseUser!.uid;
+    } on FirebaseAuthException catch (exception) {
+      if (exception.code == "invalid-email") {
+        throw SignInInvalidEmailException();
+      }
+      throw SignInInvalidCredentialsException();
     }
-
-    print(firebaseUser!.uid);
-
-    return firebaseUser!.uid;
   }
 
   Future<String> signUp(String email, String password) async {
-    User? firebaseUser = (await _firebaseAuth.createUserWithEmailAndPassword(
-            email: email, password: password))
-        .user;
+    try {
+      User? firebaseUser = (await _firebaseAuth.createUserWithEmailAndPassword(
+              email: email, password: password))
+          .user;
 
-    if (firebaseUser == null) {
-      print('firebaseUser is null');
+      return firebaseUser!.uid;
+    } on FirebaseAuthException catch (exception) {
+      if (exception.code == "email-already-in-use") {
+        throw SignUpEmailAlreadyInUseException();
+      } else if (exception.code == "invalid-email") {
+        throw SignUpInvalidEmailException();
+      } else if (exception.code == "weak-password") {
+        throw SignUpWeakPasswordException();
+      } else {
+        throw SignUpUserEmptyException();
+      }
     }
-
-    return firebaseUser!.uid;
   }
 
   Future<String?> getUserEmail() async {

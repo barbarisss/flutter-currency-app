@@ -245,6 +245,7 @@ mixin _$RegistrationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
+    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -252,6 +253,7 @@ mixin _$RegistrationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -259,6 +261,7 @@ mixin _$RegistrationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -267,6 +270,7 @@ mixin _$RegistrationState {
     required TResult Function(InitialRegistrationState value) initial,
     required TResult Function(LoadingRegistrationState value) loading,
     required TResult Function(SuccessRegistrationState value) success,
+    required TResult Function(ErrorRegistrationState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -274,6 +278,7 @@ mixin _$RegistrationState {
     TResult? Function(InitialRegistrationState value)? initial,
     TResult? Function(LoadingRegistrationState value)? loading,
     TResult? Function(SuccessRegistrationState value)? success,
+    TResult? Function(ErrorRegistrationState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -281,6 +286,7 @@ mixin _$RegistrationState {
     TResult Function(InitialRegistrationState value)? initial,
     TResult Function(LoadingRegistrationState value)? loading,
     TResult Function(SuccessRegistrationState value)? success,
+    TResult Function(ErrorRegistrationState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -346,6 +352,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
+    required TResult Function(String message) error,
   }) {
     return initial();
   }
@@ -356,6 +363,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
+    TResult? Function(String message)? error,
   }) {
     return initial?.call();
   }
@@ -366,6 +374,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -380,6 +389,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     required TResult Function(InitialRegistrationState value) initial,
     required TResult Function(LoadingRegistrationState value) loading,
     required TResult Function(SuccessRegistrationState value) success,
+    required TResult Function(ErrorRegistrationState value) error,
   }) {
     return initial(this);
   }
@@ -390,6 +400,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     TResult? Function(InitialRegistrationState value)? initial,
     TResult? Function(LoadingRegistrationState value)? loading,
     TResult? Function(SuccessRegistrationState value)? success,
+    TResult? Function(ErrorRegistrationState value)? error,
   }) {
     return initial?.call(this);
   }
@@ -400,6 +411,7 @@ class _$InitialRegistrationState implements InitialRegistrationState {
     TResult Function(InitialRegistrationState value)? initial,
     TResult Function(LoadingRegistrationState value)? loading,
     TResult Function(SuccessRegistrationState value)? success,
+    TResult Function(ErrorRegistrationState value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -455,6 +467,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
+    required TResult Function(String message) error,
   }) {
     return loading();
   }
@@ -465,6 +478,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -475,6 +489,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -489,6 +504,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     required TResult Function(InitialRegistrationState value) initial,
     required TResult Function(LoadingRegistrationState value) loading,
     required TResult Function(SuccessRegistrationState value) success,
+    required TResult Function(ErrorRegistrationState value) error,
   }) {
     return loading(this);
   }
@@ -499,6 +515,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     TResult? Function(InitialRegistrationState value)? initial,
     TResult? Function(LoadingRegistrationState value)? loading,
     TResult? Function(SuccessRegistrationState value)? success,
+    TResult? Function(ErrorRegistrationState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -509,6 +526,7 @@ class _$LoadingRegistrationState implements LoadingRegistrationState {
     TResult Function(InitialRegistrationState value)? initial,
     TResult Function(LoadingRegistrationState value)? loading,
     TResult Function(SuccessRegistrationState value)? success,
+    TResult Function(ErrorRegistrationState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -564,6 +582,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
+    required TResult Function(String message) error,
   }) {
     return success();
   }
@@ -574,6 +593,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
+    TResult? Function(String message)? error,
   }) {
     return success?.call();
   }
@@ -584,6 +604,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -598,6 +619,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     required TResult Function(InitialRegistrationState value) initial,
     required TResult Function(LoadingRegistrationState value) loading,
     required TResult Function(SuccessRegistrationState value) success,
+    required TResult Function(ErrorRegistrationState value) error,
   }) {
     return success(this);
   }
@@ -608,6 +630,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     TResult? Function(InitialRegistrationState value)? initial,
     TResult? Function(LoadingRegistrationState value)? loading,
     TResult? Function(SuccessRegistrationState value)? success,
+    TResult? Function(ErrorRegistrationState value)? error,
   }) {
     return success?.call(this);
   }
@@ -618,6 +641,7 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
     TResult Function(InitialRegistrationState value)? initial,
     TResult Function(LoadingRegistrationState value)? loading,
     TResult Function(SuccessRegistrationState value)? success,
+    TResult Function(ErrorRegistrationState value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -629,4 +653,151 @@ class _$SuccessRegistrationState implements SuccessRegistrationState {
 
 abstract class SuccessRegistrationState implements RegistrationState {
   const factory SuccessRegistrationState() = _$SuccessRegistrationState;
+}
+
+/// @nodoc
+abstract class _$$ErrorRegistrationStateCopyWith<$Res> {
+  factory _$$ErrorRegistrationStateCopyWith(_$ErrorRegistrationState value,
+          $Res Function(_$ErrorRegistrationState) then) =
+      __$$ErrorRegistrationStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorRegistrationStateCopyWithImpl<$Res>
+    extends _$RegistrationStateCopyWithImpl<$Res, _$ErrorRegistrationState>
+    implements _$$ErrorRegistrationStateCopyWith<$Res> {
+  __$$ErrorRegistrationStateCopyWithImpl(_$ErrorRegistrationState _value,
+      $Res Function(_$ErrorRegistrationState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorRegistrationState(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorRegistrationState implements ErrorRegistrationState {
+  const _$ErrorRegistrationState(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'RegistrationState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorRegistrationState &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorRegistrationStateCopyWith<_$ErrorRegistrationState> get copyWith =>
+      __$$ErrorRegistrationStateCopyWithImpl<_$ErrorRegistrationState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() success,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? success,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialRegistrationState value) initial,
+    required TResult Function(LoadingRegistrationState value) loading,
+    required TResult Function(SuccessRegistrationState value) success,
+    required TResult Function(ErrorRegistrationState value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialRegistrationState value)? initial,
+    TResult? Function(LoadingRegistrationState value)? loading,
+    TResult? Function(SuccessRegistrationState value)? success,
+    TResult? Function(ErrorRegistrationState value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialRegistrationState value)? initial,
+    TResult Function(LoadingRegistrationState value)? loading,
+    TResult Function(SuccessRegistrationState value)? success,
+    TResult Function(ErrorRegistrationState value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorRegistrationState implements RegistrationState {
+  const factory ErrorRegistrationState(final String message) =
+      _$ErrorRegistrationState;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorRegistrationStateCopyWith<_$ErrorRegistrationState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
