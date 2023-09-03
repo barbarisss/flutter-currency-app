@@ -54,12 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           child: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
-              if (state is LoadingLoginState) {
-                print('LoadingLoginState phh phh phh');
-              }
-
               if (state is SuccessLoginState) {
-                print('SuccessLoginState yes yes yes');
                 AutoRouter.of(context).pushAndPopUntil(
                   const CurrenciesRoute(),
                   predicate: (route) => false,
@@ -117,7 +112,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              print('validate');
                               String email = emailController.text.trim();
                               String password = passwordController.text.trim();
 
@@ -125,8 +119,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     email: email,
                                     password: password,
                                   ));
-                            } else {
-                              print('no validate');
                             }
                           },
                           style: ButtonStyle(

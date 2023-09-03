@@ -12,7 +12,6 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
   Future<List<CurrencyEntity>> getCurrenciesInfo() async {
     final response = await currencyRemoteDataSource.getCurrenciesInfo();
 
-    //TODO: сделать маппер
     final currencies = response
         .map((item) => CurrencyEntity(
               symbol: item.symbol,
@@ -36,12 +35,6 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
       return a.name.compareTo(b.name);
     });
 
-    print('responseInfos: ${responseInfos.length}');
-    print('responseLatest: ${responseLatest.length}');
-
-    print(responseInfos);
-    print(responseLatest);
-
     List<CurrencyEntity> currencies = [];
 
     for (var i = 0; i < responseInfos.length; i++) {
@@ -55,16 +48,6 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
       ));
     }
 
-    // TODO: сделать маппер
-    // final currencies = responseLatest
-    //     .map((item) => CurrencyInfoEntity(
-    //           symbol: '',
-    //           code: '',
-    //           name: item.name,
-    //           base: item.base,
-    //           rate: item.rate,
-    //         ))
-    //     .toList();
     return currencies;
   }
 
@@ -82,7 +65,6 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
       dateTo,
     );
 
-    //TODO: сделать маппер
     final currencyTimeRates = response
         .map((item) => CurrencyDetailEntity(
               date: item.date,

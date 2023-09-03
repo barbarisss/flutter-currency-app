@@ -52,12 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ),
           child: BlocConsumer<RegistrationBloc, RegistrationState>(
             listener: (context, state) {
-              if (state is LoadingRegistrationState) {
-                print('SuccessRegistrationState phh phh phh');
-              }
-
               if (state is SuccessRegistrationState) {
-                print('SuccessRegistrationState yes yes yes');
                 AutoRouter.of(context).pop();
                 SnackBarService.showSnackBar(
                   context,
@@ -67,8 +62,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               }
 
               if (state is ErrorRegistrationState) {
-                print('SuccessRegistrationState yes yes yes');
-
                 SnackBarService.showSnackBar(
                   context,
                   state.message,

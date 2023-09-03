@@ -24,19 +24,13 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
         queryParameters: queryParameters,
       );
 
-      print(response.toString());
-
       final data = response.data['data'] as Map<String, dynamic>;
-
-      print(data.toString());
 
       final List<CurrencyInfoModel> currencyInfoList = [];
 
       data.forEach((key, value) {
         currencyInfoList.add(CurrencyInfoModel.fromJson(value));
       });
-
-      print(currencyInfoList.toString());
 
       return currencyInfoList;
     } on DioException catch (exception) {
@@ -62,8 +56,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
       );
 
       final data = response.data['data'] as Map<String, dynamic>;
-
-      print(data.toString());
 
       final List<CurrencyRateModel> currenciesRates = [];
 
@@ -113,11 +105,7 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
         queryParameters: queryParameters,
       );
 
-      print(response.toString());
-
       final data = response.data['data'] as Map<String, dynamic>;
-
-      print(data.toString());
 
       final List<CurrencyDetailModel> currencyTimeRates = [];
 
@@ -133,9 +121,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
           ),
         );
       });
-
-      print(currencyTimeRates.toString());
-      print('длина: ${currencyTimeRates.length}');
 
       return currencyTimeRates;
     } on DioException catch (exception) {

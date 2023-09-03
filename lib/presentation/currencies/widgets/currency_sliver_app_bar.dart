@@ -131,7 +131,6 @@ class _BaseCurrencyWidget extends StatelessWidget {
             return bodyWidget;
           },
           listener: (context, state) {
-            print('BaseCurrencyBlocListener HERE WE ARE)))');
             state.maybeWhen(
               afterSelect: (currency) {
                 BlocProvider.of<CurrencyBloc>(context)

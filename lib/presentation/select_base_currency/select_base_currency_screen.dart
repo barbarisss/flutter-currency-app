@@ -19,8 +19,6 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('BUILD SelectBaseCurrencyScreen');
-
     late Widget bodyWidget;
 
     return BlocProvider(

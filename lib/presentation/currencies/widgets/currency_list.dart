@@ -25,7 +25,6 @@ class CurrencyListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final name = currencies[index].name;
         final symbol = currencies[index].symbol;
-        // TODO: подумать над другим вариком(!)
         final rate = currencies[index].rate!.toStringAsFixed(3);
         return Padding(
           padding: EdgeInsets.symmetric(
