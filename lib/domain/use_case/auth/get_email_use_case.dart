@@ -6,7 +6,7 @@ class GetEmailUseCase {
   final AuthRepository _authRepository;
 
   Future<String?> call() async {
-    String? userEmail = await _authRepository.getUserEmail();
+    final userEmail = await _authRepository.getUserEmail();
 
     return userEmail;
   }

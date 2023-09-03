@@ -1,5 +1,5 @@
 import 'package:currency_app/domain/entity/currency_detail/currency_detail_entity.dart';
-import 'package:currency_app/domain/use_case/currancy/get_currency_time_rates_use_case.dart';
+import 'package:currency_app/domain/use_case/currency/get_currency_time_rates_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,6 +35,10 @@ class CurrencyTimeSeriesBloc
       dateTo,
     );
 
-    emit(CurrencyTimeSeriesState.loaded(response));
+    response.fold(
+      (failure) => emit(CurrencyTimeSeriesState.error(failure.message)),
+      (currencyTimeSeries) =>
+          emit(CurrencyTimeSeriesState.loaded(currencyTimeSeries)),
+    );
   }
 }

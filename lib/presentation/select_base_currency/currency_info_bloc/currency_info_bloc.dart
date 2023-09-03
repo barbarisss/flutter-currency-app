@@ -1,5 +1,5 @@
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
-import 'package:currency_app/domain/use_case/currancy/get_currencies_info_use_case.dart';
+import 'package:currency_app/domain/use_case/currency/get_currencies_info_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,6 +21,9 @@ class CurrencyInfoBloc extends Bloc<CurrencyInfoEvent, CurrencyInfoState> {
     emit(const CurrencyInfoState.loading());
     final response = await getCurrenciesInfoUseCase();
 
-    emit(CurrencyInfoState.loaded(response));
+    response.fold(
+      (failure) => emit(CurrencyInfoState.error(failure.message)),
+      (currencies) => emit(CurrencyInfoState.loaded(currencies)),
+    );
   }
 }

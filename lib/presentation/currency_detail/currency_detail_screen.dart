@@ -55,8 +55,8 @@ class CurrencyDetailScreen extends StatelessWidget {
             SizedBox(height: AppConstants.mainPaddingHeight * 2),
             BlocBuilder<CurrencyTimeSeriesBloc, CurrencyTimeSeriesState>(
               builder: (context, state) {
-                state.when(
-                  initial: () => chart = const SizedBox(),
+                state.maybeWhen(
+                  orElse: () => chart = const SizedBox(),
                   loading: () => chart = const Center(
                     child: CustomProgressIndicator(),
                   ),
