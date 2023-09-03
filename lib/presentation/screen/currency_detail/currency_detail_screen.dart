@@ -6,6 +6,7 @@ import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/presentation/bloc/currency_time_series_bloc/currency_time_series_bloc.dart';
 import 'package:currency_app/presentation/screen/currency_detail/widgets/chart.dart';
 import 'package:currency_app/presentation/screen/currency_detail/widgets/current_rate.dart';
+import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,7 +58,7 @@ class CurrencyDetailScreen extends StatelessWidget {
                 state.when(
                   initial: () => chart = const SizedBox(),
                   loading: () => chart = const Center(
-                    child: CircularProgressIndicator(),
+                    child: CustomProgressIndicator(),
                   ),
                   loaded: (currencyTimeSeries) => chart = ChartWidget(
                     currencyTimeSeries: currencyTimeSeries,

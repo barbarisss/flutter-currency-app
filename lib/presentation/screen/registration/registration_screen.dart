@@ -3,6 +3,7 @@ import 'package:currency_app/app/di/injector.dart';
 import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/core/validators/app_validators.dart';
 import 'package:currency_app/presentation/bloc/registration_bloc/registration_bloc.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
@@ -43,7 +44,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       create: (context) => injector<RegistrationBloc>(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Registration'),
+          title: const Text(AppStrings.registrationTitle),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -59,7 +60,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 AutoRouter.of(context).pop();
                 SnackBarService.showSnackBar(
                   context,
-                  'Registration is successful',
+                  AppStrings.registrationSuccess,
                   SnackBarType.success,
                 );
               }
@@ -81,20 +82,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           children: [
                             CustomTextField(
                               controller: emailController,
-                              helperText: 'Email',
+                              helperText: AppStrings.email,
                               onValidate: AppValidators.email,
                             ),
                             SizedBox(height: AppConstants.mainPaddingHeight),
                             CustomTextField(
                               controller: passwordController,
-                              helperText: 'Password',
+                              helperText: AppStrings.password,
                               isPassword: true,
                               onValidate: AppValidators.password,
                             ),
                             SizedBox(height: AppConstants.mainPaddingHeight),
                             CustomTextField(
                               controller: repeatPasswordController,
-                              helperText: 'Repeat password',
+                              helperText: AppStrings.repeatPassword,
                               isPassword: true,
                               onValidate: AppValidators.password,
                             ),
@@ -111,7 +112,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   repeatPasswordController.text) {
                                 SnackBarService.showSnackBar(
                                   context,
-                                  'The passwords must match',
+                                  AppStrings.matchPasswords,
                                   SnackBarType.error,
                                 );
                                 return;
@@ -150,7 +151,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               ),
                             ),
                           ),
-                          child: const Text('Sign up'),
+                          child: const Text(AppStrings.signUp),
                         ),
                       ),
                     ],

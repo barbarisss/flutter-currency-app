@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/di/injector.dart';
-import 'package:currency_app/app/route/app_router_auto.gr.dart';
+import 'package:currency_app/app/route/app_router.gr.dart';
 import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (context) => injector<LoginBloc>(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(AppStrings.login),
+          title: const Text(AppStrings.loginTitle),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
                 SnackBarService.showSnackBar(
                   context,
-                  'Log in is successful',
+                  AppStrings.loginSuccess,
                   SnackBarType.success,
                 );
               }
@@ -85,16 +85,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CustomTextField(
                             controller: emailController,
-                            helperText: 'Email',
+                            helperText: AppStrings.email,
                             onValidate: (email) =>
                                 email != null && !EmailValidator.validate(email)
-                                    ? 'Input correct email'
+                                    ? AppStrings.inputCorrectEmail
                                     : null,
                           ),
                           SizedBox(height: AppConstants.mainPaddingHeight),
                           CustomTextField(
                             controller: passwordController,
-                            helperText: 'Password',
+                            helperText: AppStrings.password,
                             isPassword: true,
                           ),
                         ],
@@ -142,14 +142,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        child: const Text('Sign in'),
+                        child: const Text(AppStrings.signIn),
                       ),
                     ),
                     SizedBox(height: AppConstants.mainPaddingHeight),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Don\'t have an account? '),
+                        const Text('${AppStrings.haveAnAccount} '),
                         GestureDetector(
                           onTap: () {
                             AutoRouter.of(context).push(
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             clearControllers();
                           },
                           child: const Text(
-                            'Registration',
+                            AppStrings.registrationTitle,
                             style: TextStyle(
                               color: AppColors.lightBlue,
                               fontWeight: FontWeight.w500,

@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:currency_app/app/route/app_router_auto.gr.dart';
+import 'package:currency_app/app/route/app_router.gr.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/presentation/bloc/base_currency_bloc/base_currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/currency_bloc/currency_bloc.dart';
 import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
@@ -97,9 +98,8 @@ class _BaseCurrencyWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: const Text('Select base'),
+                  child: const Text(AppStrings.selectBase),
                 );
-                ;
               },
               afterSelect: (currency) {
                 bodyWidget = GestureDetector(
@@ -189,7 +189,7 @@ class AuthInfoWidget extends StatelessWidget {
                 );
               },
               child: const Text(
-                'Log in',
+                AppStrings.logIn,
                 style: TextStyle(
                   color: AppColors.lightBlue,
                 ),

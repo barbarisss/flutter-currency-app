@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_app/app/di/injector.dart';
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/presentation/bloc/currency_info_bloc/currency_info_bloc.dart';
 import 'package:currency_app/presentation/screen/select_base_currency/widgets/base_currencies.dart';
 import 'package:currency_app/presentation/shared_widgets/custom_progress_indicator.dart';
@@ -26,7 +27,7 @@ class SelectBaseCurrencyScreen extends StatelessWidget {
           injector<CurrencyInfoBloc>()..add(const GetCurrenciesInfoEvent()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Select base currency'),
+          title: const Text(AppStrings.selectBaseCurrency),
         ),
         body: BlocBuilder<CurrencyInfoBloc, CurrencyInfoState>(
           builder: (context, state) {

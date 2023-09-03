@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:currency_app/app/route/app_router_auto.gr.dart';
+import 'package:currency_app/app/route/app_router.gr.dart';
 import 'package:currency_app/core/services/snack_bar.dart';
 import 'package:currency_app/core/utils/colors.dart';
 import 'package:currency_app/core/utils/constants.dart';
+import 'package:currency_app/core/utils/strings.dart';
 import 'package:currency_app/domain/entity/currency/currency_entity.dart';
 import 'package:currency_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class CurrencyListWidget extends StatelessWidget {
                   if (state is UnauthorizedUserState) {
                     SnackBarService.showSnackBar(
                       context,
-                      'Log in to see the details of the currency',
+                      AppStrings.loginToSeeDetails,
                       SnackBarType.info,
                     );
                   } else {
